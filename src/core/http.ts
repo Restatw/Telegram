@@ -13,7 +13,7 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
     constructor() {
         super()
         this.ssl = true;
-        this.setHost("api.telegram.org")
+        this.setHostDomain("api.telegram.org")
             .setPort(443)
             .setMethod("POST")
     }

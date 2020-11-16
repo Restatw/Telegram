@@ -21,8 +21,8 @@ export declare namespace HttpApi {
         body?: any;
         setProtocol: (v: string) => any;
         getProtocol: () => string;
-        setHost: (v: string) => any;
-        getHost: () => string;
+        setHostDomain: (v: string) => any;
+        getHostDomain: () => string;
         setHostname: (v: string) => any;
         getHostname: () => string;
         setFamily: (v: number) => any;
@@ -47,7 +47,7 @@ export declare namespace HttpApi {
         getTimeout: () => number;
         setBody: (v: any) => any;
         getBody: () => any;
-        request: (option: ApiRequsetStream, callback?: RequestCallback) => http.ClientRequest;
+        request: (option: any, callback?: RequestCallback) => http.ClientRequest;
         sendHttpRequest: (callback: RequestCallback, error: RequestError) => void;
     }
 }

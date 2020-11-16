@@ -9,8 +9,8 @@ var HttpApi;
         constructor() {
             this.setProtocol = (v) => { this.protocol = v; return this; };
             this.getProtocol = () => { return this.protocol; };
-            this.setHost = (v) => { this.host = v; return this; };
-            this.getHost = () => { return this.host; };
+            this.setHostDomain = (v) => { this.host = v; return this; };
+            this.getHostDomain = () => { return this.host; };
             this.setHostname = (v) => { this.hostname = v; return this; };
             this.getHostname = () => { return this.hostname; };
             this.setFamily = (v) => { this.family = v; return this; };

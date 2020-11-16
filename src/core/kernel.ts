@@ -26,8 +26,8 @@ export namespace HttpApi {
         setProtocol = (v: string): any => { this.protocol = v ; return this }
         getProtocol = (): string => { return this.protocol }
 
-        setHost = (v: string): any => { this.host = v ; return this }
-        getHost = () : string => { return this.host }
+        setHostDomain = (v: string): any => { this.host = v ; return this }
+        getHostDomain = () : string => { return this.host }
 
         setHostname = (v: string): any => { this.hostname = v ; return this }
         getHostname = (): string => { return this.hostname }
@@ -65,7 +65,7 @@ export namespace HttpApi {
         setBody = (v: any):  any => { this.body = v ; return this }
         getBody = (): any => { return this.body }
 
-        request = (option: ApiRequsetStream, callback?: RequestCallback ): http.ClientRequest => {
+        request = (option: any, callback?: RequestCallback ): http.ClientRequest => {
             return ( this.ssl ? https : http ).request(option,(res) => {  
                 res.on('data', callback) 
             }) 
