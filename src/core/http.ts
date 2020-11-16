@@ -57,7 +57,7 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
     // success 為 Http Request 正確取得回傳資訊後的處理動作
     // error 為 Http Request 錯誤處理
     reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void {
-        try { this.setDir(token, method).sendHttpRequest((res) => { success(res.toString()) }, error) }
+        try { this.setDir(token, method).sendHttpRequest((res) => { success(TelegramHttp.decode(res)) }, error) }
         catch (e) { error(e) }
     }
 
