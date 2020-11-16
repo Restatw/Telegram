@@ -1,4 +1,6 @@
+import 'reflect-metadata';
 import { TelegramHttp } from './core/http'
+import 'es6-shim';
 
 export type InputFile = string
 export type InlineKeyboardMarkup = any

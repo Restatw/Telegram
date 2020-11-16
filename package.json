@@ -5,9 +5,15 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ts-start": "nodemon src/test.ts"
+    // "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "class-transformer": "^0.3.1",
+    "es6-shim": "^0.35.6",
+    "reflect-metadata": "^0.1.13"
+  }
 }
