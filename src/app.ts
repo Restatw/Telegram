@@ -14,136 +14,136 @@ export module Telegram {
     export module Bot {
 
         export class User {
-            id: number
-            is_bot: boolean
-            first_name?: string
-            last_name?: string
-            username?: string
-            language_code?: string
-            can_join_groups?: boolean
-            can_read_all_group_messages?: boolean
-            supports_inline_queries?: boolean
+            public id: number
+            public is_bot: boolean
+            public first_name?: string
+            public last_name?: string
+            public username?: string
+            public language_code?: string
+            public can_join_groups?: boolean
+            public can_read_all_group_messages?: boolean
+            public supports_inline_queries?: boolean
         }
 
         export class Chat{
-            id: number
-            type: string
-            title?: string
-            username?: string
-            first_name?: string
-            last_name?:string
-            photo?: ChatPhoto
-            bio?: string
-            description?: string
-            invite_link?: string
-            pinned_message?: Message
-            permissioms?: ChatPermissions
-            slow_mode_delay?: number
-            sticker_set_name?: string
-            can_set_sticker_set?: boolean
-            linked_chat_id?: number
-            location?: ChatLocation
+            public id: number
+            public type: string
+            public title?: string
+            public username?: string
+            public first_name?: string
+            public last_name?:string
+            public photo?: ChatPhoto
+            public bio?: string
+            public description?: string
+            public invite_link?: string
+            public pinned_message?: Message
+            public permissioms?: ChatPermissions
+            public slow_mode_delay?: number
+            public sticker_set_name?: string
+            public can_set_sticker_set?: boolean
+            public linked_chat_id?: number
+            public location?: ChatLocation
         }
 
         export class ChatPhoto {
-            small_file_id: string
-            small_file_unique_id: string
-            big_file_id: string
-            big_file_unique_id: string
+            public small_file_id: string
+            public small_file_unique_id: string
+            public big_file_id: string
+            public big_file_unique_id: string
         }
 
         // Describes actions that a non-administrator user is allowed to take in a chat.
         export class ChatPermissions {
-            can_send_messages?: Boolean
-            can_send_media_messages?: Boolean
-            can_send_polls?: Boolean
-            can_send_other_messages?: Boolean
-            can_add_web_page_previews?: Boolean
-            can_change_info?: Boolean
-            can_invite_users?: Boolean
-            can_pin_messages?: Boolean
+            public can_send_messages?: Boolean
+            public can_send_media_messages?: Boolean
+            public can_send_polls?: Boolean
+            public can_send_other_messages?: Boolean
+            public can_add_web_page_previews?: Boolean
+            public can_change_info?: Boolean
+            public can_invite_users?: Boolean
+            public can_pin_messages?: Boolean
         }
 
         export class ChatLocation {
-            location: Location
-            address: string
+            public location: Location
+            public address: string
         }
 
         export class Message {
-            message_id: number
+            public message_id: number
             @Type(() => User)
-            from?: User
-            sender_chat?: Chat
-            date: number
+            public from?: User
+            public sender_chat?: Chat
+            public date: number
             @Type(() => Chat)
-            chat: Chat
+            public chat: Chat
             @Type(()=>User)
-            forward_from?: User
+            public forward_from?: User
             @Type(()=>Chat)
-            forward_from_chat?: Chat
-            forward_signature?: string
-            forward_sender_name?: string
-            forward_date?: number
+            public forward_from_chat?: Chat
+            public forward_signature?: string
+            public forward_sender_name?: string
+            public forward_date?: number
             @Type(()=>Message)
-            reply_to_message?: Message
+            public reply_to_message?: Message
             @Type(()=>User)
-            via_bot: User
-            edit_date: number
-            media_group_id?: string
-            author_signature?: string
-            text?: string
-            entities?: Array<MessageEntity>
+            public via_bot: User
+            public edit_date: number
+            public media_group_id?: string
+            public author_signature?: string
+            public text?: string
+            public entities?: Array<MessageEntity>
             @Type(()=>Animation)
-            animation?: Animation
+            public animation?: Animation
             @Type(()=>Audio)
-            audio?: Audio
+            public audio?: Audio
             @Type(()=>Document)
-            document?: Document
-            photo?: Array<PhotoSize>
+            public document?: Document
+            public photo?: Array<PhotoSize>
             @Type(()=>Sticker)
-            sticker?: Sticker
+            public sticker?: Sticker
             @Type(()=>Video)
-            video?: Video
+            public video?: Video
             @Type(()=>VideoNote)
-            video_note?: VideoNote
+            public video_note?: VideoNote
             @Type(()=>Voice)
-            voice?: Voice
-            caption?: string
-            caption_entities?: Array<MessageEntity>
+            public voice?: Voice
+            public caption?: string
+            public caption_entities?: Array<MessageEntity>
             @Type(()=>Contact)
-            contact?: Contact
+            public contact?: Contact
             @Type(()=>Dice)
-            dice?: Dice
+            public dice?: Dice
             @Type(()=>Game)
-            game?: Game
+            public game?: Game
             @Type(()=>Poll)
-            poll?: Poll
+            public poll?: Poll
             @Type(()=>Venue)
-            venue?: Venue
+            public venue?: Venue
             @Type(()=>Location)
-            location?: Location
-            new_chat_members?: Array<User>
+            public location?: Location
+            public new_chat_members?: Array<User>
             @Type(()=>User)
-            left_chat_member?: User
-            new_chat_title?: string
-            new_chat_photo?: Array<PhotoSize>
-            delete_chat_photo?: true
-            group_chat_created?: true
-            supergroup_chat_created?: true
-            channel_chat_created?: true
-            migrate_to_chat_id?: number
-            migrate_from_chat_id?: number
-            pinned_message?: Message
+            public left_chat_member?: User
+            public new_chat_title?: string
+            public new_chat_photo?: Array<PhotoSize>
+            public delete_chat_photo?: true
+            public group_chat_created?: true
+            public supergroup_chat_created?: true
+            public channel_chat_created?: true
+            public migrate_to_chat_id?: number
+            public migrate_from_chat_id?: number
+            public pinned_message?: Message
             @Type(()=>Invoice)
-            invoice?: Invoice
+            public invoice?: Invoice
             @Type(()=>SuccessfulPayment)
-            successful_payment?: SuccessfulPayment
-            connected_website: string
+            public successful_payment?: SuccessfulPayment
+            public connected_website: string
             @Type(()=> PassportData)
-            passport_data?: PassportData
+            public passport_data?: PassportData
             @Type(()=>ProximityAlertTriggered)
-            proximity_alert_triggered?: ProximityAlertTriggered
-            replay_markup?: InlineKeyboardMarkup
+            public proximity_alert_triggered?: ProximityAlertTriggered
+            public replay_markup?: InlineKeyboardMarkup
 
             getFrom(): User {
                 return this.from
@@ -156,64 +156,64 @@ export module Telegram {
 
         export class ProximityAlertTriggered {
             @Type(()=>User)
-            traveler: User
+            public traveler: User
             @Type(()=>User)
-            watcher: User
-            distance: number
+            public watcher: User
+            public distance: number
         }
 
         // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
         export class MessageEntity {
-            type: string
-            offset: number
-            length: number
-            url?: string
-            user?: User
-            language?: string
+            public type: string
+            public offset: number
+            public length: number
+            public url?: string
+            public user?: User
+            public language?: string
         }
 
         // This object represents an audio file to be treated as music by the Telegram clients.
         export class Audio {
-            file_id: string
-            file_unique_id: string
-            duration: number
-            performer: string
-            title: string
-            file_name: string
-            mime_type: string
-            file_size: number
-            thumb: PhotoSize
+            public file_id: string
+            public file_unique_id: string
+            public duration: number
+            public performer: string
+            public title: string
+            public file_name: string
+            public mime_type: string
+            public file_size: number
+            public thumb: PhotoSize
         }
 
         // This object represents one size of a photo or a file / sticker thumbnail.
         export class PhotoSize {
-            file_id: string
-            file_unique_id: string
-            width: number
-            height: number
-            file_size: number
+            public file_id: string
+            public file_unique_id: string
+            public width: number
+            public height: number
+            public file_size: number
         }
 
         // This object represents a sticker.
         export class Sticker {
-            file_id: string
-            file_unique_id: string
-            width: number
-            height: number
-            is_animated: boolean
-            thumb?: PhotoSize
-            emoji?: string
-            set_name?: string
-            mask_position?: MaskPosition
-            file_size?: number
+            public file_id: string
+            public file_unique_id: string
+            public width: number
+            public height: number
+            public is_animated: boolean
+            public thumb?: PhotoSize
+            public emoji?: string
+            public set_name?: string
+            public mask_position?: MaskPosition
+            public file_size?: number
         }
 
         // This object describes the position on faces where a mask should be placed by default.
         export class MaskPosition {
-            point: string
-            x_shift: number
-            y_shift: number
-            scale: number
+            public point: string
+            public x_shift: number
+            public y_shift: number
+            public scale: number
         }
 
         // This object represents a video file.
