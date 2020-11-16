@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { TelegramHttp } from './core/http'
 import 'es6-shim';
+import { Type } from 'class-transformer/decorators';
 
 export type InputFile = string
 export type InlineKeyboardMarkup = any
@@ -11,6 +12,449 @@ export type TelegramBotMethod = string
 
 export module Telegram {
     export module Bot {
+
+        export class User {
+            id: number
+            is_bot: boolean
+            first_name?: string
+            last_name?: string
+            username?: string
+            language_code?: string
+            can_join_groups?: boolean
+            can_read_all_group_messages?: boolean
+            supports_inline_queries?: boolean
+        }
+
+        export class Chat{
+            id: number
+            type: string
+            title?: string
+            username?: string
+            first_name?: string
+            last_name?:string
+            photo?: ChatPhoto
+            bio?: string
+            description?: string
+            invite_link?: string
+            pinned_message?: Message
+            permissioms?: ChatPermissions
+            slow_mode_delay?: number
+            sticker_set_name?: string
+            can_set_sticker_set?: boolean
+            linked_chat_id?: number
+            location?: ChatLocation
+        }
+
+        export class ChatPhoto {
+            small_file_id: string
+            small_file_unique_id: string
+            big_file_id: string
+            big_file_unique_id: string
+        }
+
+        // Describes actions that a non-administrator user is allowed to take in a chat.
+        export class ChatPermissions {
+            can_send_messages?: Boolean
+            can_send_media_messages?: Boolean
+            can_send_polls?: Boolean
+            can_send_other_messages?: Boolean
+            can_add_web_page_previews?: Boolean
+            can_change_info?: Boolean
+            can_invite_users?: Boolean
+            can_pin_messages?: Boolean
+        }
+
+        export class ChatLocation {
+            location: Location
+            address: string
+        }
+
+        export class Message {
+            message_id: number
+            @Type(() => User)
+            from?: User
+            sender_chat?: Chat
+            date: number
+            @Type(() => Chat)
+            chat: Chat
+            @Type(()=>User)
+            forward_from?: User
+            @Type(()=>Chat)
+            forward_from_chat?: Chat
+            forward_signature?: string
+            forward_sender_name?: string
+            forward_date?: number
+            @Type(()=>Message)
+            reply_to_message?: Message
+            @Type(()=>User)
+            via_bot: User
+            edit_date: number
+            media_group_id?: string
+            author_signature?: string
+            text?: string
+            entities?: Array<MessageEntity>
+            @Type(()=>Animation)
+            animation?: Animation
+            @Type(()=>Audio)
+            audio?: Audio
+            @Type(()=>Document)
+            document?: Document
+            photo?: Array<PhotoSize>
+            @Type(()=>Sticker)
+            sticker?: Sticker
+            @Type(()=>Video)
+            video?: Video
+            @Type(()=>VideoNote)
+            video_note?: VideoNote
+            @Type(()=>Voice)
+            voice?: Voice
+            caption?: string
+            caption_entities?: Array<MessageEntity>
+            @Type(()=>Contact)
+            contact?: Contact
+            @Type(()=>Dice)
+            dice?: Dice
+            @Type(()=>Game)
+            game?: Game
+            @Type(()=>Poll)
+            poll?: Poll
+            @Type(()=>Venue)
+            venue?: Venue
+            @Type(()=>Location)
+            location?: Location
+            new_chat_members?: Array<User>
+            @Type(()=>User)
+            left_chat_member?: User
+            new_chat_title?: string
+            new_chat_photo?: Array<PhotoSize>
+            delete_chat_photo?: true
+            group_chat_created?: true
+            supergroup_chat_created?: true
+            channel_chat_created?: true
+            migrate_to_chat_id?: number
+            migrate_from_chat_id?: number
+            pinned_message?: Message
+            @Type(()=>Invoice)
+            invoice?: Invoice
+            @Type(()=>SuccessfulPayment)
+            successful_payment?: SuccessfulPayment
+            connected_website: string
+            @Type(()=> PassportData)
+            passport_data?: PassportData
+            @Type(()=>ProximityAlertTriggered)
+            proximity_alert_triggered?: ProximityAlertTriggered
+            replay_markup?: InlineKeyboardMarkup
+
+            getFrom(): User {
+                return this.from
+            }
+
+            getChat() {
+                return this.chat
+            }
+        }
+
+        export class ProximityAlertTriggered {
+            @Type(()=>User)
+            traveler: User
+            @Type(()=>User)
+            watcher: User
+            distance: number
+        }
+
+        // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
+        export class MessageEntity {
+            type: string
+            offset: number
+            length: number
+            url?: string
+            user?: User
+            language?: string
+        }
+
+        // This object represents an audio file to be treated as music by the Telegram clients.
+        export class Audio {
+            file_id: string
+            file_unique_id: string
+            duration: number
+            performer: string
+            title: string
+            file_name: string
+            mime_type: string
+            file_size: number
+            thumb: PhotoSize
+        }
+
+        // This object represents one size of a photo or a file / sticker thumbnail.
+        export class PhotoSize {
+            file_id: string
+            file_unique_id: string
+            width: number
+            height: number
+            file_size: number
+        }
+
+        // This object represents a sticker.
+        export class Sticker {
+            file_id: string
+            file_unique_id: string
+            width: number
+            height: number
+            is_animated: boolean
+            thumb?: PhotoSize
+            emoji?: string
+            set_name?: string
+            mask_position?: MaskPosition
+            file_size?: number
+        }
+
+        // This object describes the position on faces where a mask should be placed by default.
+        export class MaskPosition {
+            point: string
+            x_shift: number
+            y_shift: number
+            scale: number
+        }
+
+        // This object represents a video file.
+        export class Video {
+            file_id: string
+            file_unique_id: string
+            width: number
+            height: number
+            duration: number
+            thumb?: PhotoSize
+            file_name?: string
+            mime_type?: string
+            file_size?: number
+        }
+
+        // This object represents a video message (available in Telegram apps as of v.4.0).
+        export class VideoNote {
+            file_id: string
+            file_unique_id: string
+            length: number
+            duration: number
+            thumb: PhotoSize
+            file_size: number
+        }
+
+        // This object represents a voice note.
+        export class Voice {
+            file_id: string
+            file_unique_id: string
+            duration: number
+            mime_type?: string
+            file_size?: number
+        }
+
+        // This object represents a phone contact.
+        export class Contact{
+            phone_number: string
+            first_name: string
+            last_name?: string
+            user_id?: number
+            vcard?: string
+        }
+
+        // This object represents an animated emoji that displays a random value.
+        export class Dice {
+            emoji: string
+            value: number
+        }
+
+        export class Game {
+            title: string
+            description: string
+            photo: Array<PhotoSize>
+            text: string
+            text_entities: Array<MessageEntity>
+            @Type(()=>Animation)
+            animation: Animation
+        }
+
+        export class Poll {
+            id: string
+            question: string
+            options: Array<PollOption>
+            total_voter_count: number
+            is_closed: Boolean
+            is_anonymous: Boolean
+            type: string
+            allows_multiple_answers: boolean
+            correct_option_id?: number
+            explanation?: string
+            explanation_entities?: Array<MessageEntity>
+            open_period: number
+            close_date: number
+        }
+        
+        export class PollOption {
+            text: string
+            voter_count: number
+        }
+
+        export class Location {
+            longitude: number
+            latitude: number
+            horizontal_accuracy?: number
+            live_period?: number
+            heading?: number
+            proximity_alert_radius?: number
+        }
+
+        export class Venue {
+            @Type(()=>Location)
+            location: Location
+            title: string
+            address: string
+            foursquare_id?: string
+            foursquare_type?: string
+            google_place_id?: string
+            google_place_type?: string
+        }
+
+        export class Invoice {
+            title: string
+            description: string
+            start_parameter: string
+            currency: string
+            total_amount: number
+        }
+
+        export class SuccessfulPayment {
+            currency: string
+            total_amount: number
+            invoice_payload: string
+            shipping_option_id?: string
+            order_info?: OrderInfo
+            telegram_payment_charge_id: string
+            provider_payment_charge_id: string
+        }
+
+        export class OrderInfo {
+            name?: string
+            photo_number?: string 
+            email?: string
+            @Type(()=>ShippingOption)
+            shipping_address?: ShippingAddress
+        }
+
+        export class ShippingAddress {
+            country_code: string
+            state: string
+            city: string
+            street_line1: string
+            street_line2: string
+            post_code: string
+        }
+
+        export class ShippingOption {
+            id: string
+            title?: string
+            prices: Array<LabeledPrice>
+        }
+
+        export class LabeledPrice {
+            label: string
+            amount: number
+        }
+
+        export class PassportData {
+            data: Array<EncryptedPassportElement>
+            credentials: EncryptedCredentials
+        }
+
+        export class EncryptedPassportElement {
+            type: string
+            data?: string 
+            phone_number?: string
+            email?: string
+            files?: Array<PassportFile>
+            @Type(()=>PassportFile)
+            front_side?: PassportFile
+            reverse_side?: PassportFile
+            selfie?: PassportFile
+            translation?: Array<PassportFile>
+            hash: string
+        }
+
+        export class EncryptedCredentials {
+            data: string
+            hash: string
+            secret: string
+        }
+
+        export class PassportFile {
+            file_id: string
+            file_unique_id: string
+            file_size: number
+            file_date: number
+        }
+
+
+        export const UNDEFINED: string = "undefined"
+
+        export class RequestBody {
+
+            update_id: number
+
+            @Type(() => Message)
+            message: Message
+            @Type(() => CallbackQuery)
+            callback_query: CallbackQuery
+
+            // 自訂方法
+
+            // 取得訊息變數
+            getMessage(): Message { return this.message }
+            // 檢查請求是否是客戶端的訊息
+            isMessage(): Boolean { return typeof this.getMessage() !== UNDEFINED }
+            // 取得客戶端按鈕回傳
+            getCallbackQuery(): CallbackQuery { return this.callback_query }
+            // 檢查請求是否客戶端按鈕回傳
+            isCallback(): Boolean { return typeof this.getCallbackQuery() !== UNDEFINED }
+            // 取得訊息 自動判斷是訊息還是按鈕回傳
+            getInputMessage(): Message { return this.isMessage() ? this.getMessage() : this.getCallbackQuery().getMessage() }
+
+            getData(): string {
+                return this.isCallback() ? this.getCallbackQuery().data : undefined
+            }
+
+            getText(): string {
+                return this.isMessage() ? this.getMessage().text : undefined
+            }
+        }
+
+        export class CallbackQuery {
+
+            id: string
+
+            @Type(() => User)
+            from: User
+            getFrom(): User {
+                return this.from
+            }
+
+            
+            @Type(() => Message)
+            message: Message
+            getMessage() {
+                return this.message
+            }
+
+            inline_message_id?: string
+
+            chat_instance: string
+
+            data: string
+            getData() {
+                return this.data
+            }
+
+            game_short_name?: string
+        }
+
         export class api {
 
             public static PARSE_MODE_MARKDOWN_V2 = "MarkdownV2"

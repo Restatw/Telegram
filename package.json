@@ -6,7 +6,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "ts-start": "nodemon src/test.ts"
-    // "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +14,14 @@
     "class-transformer": "^0.3.1",
     "es6-shim": "^0.35.6",
     "reflect-metadata": "^0.1.13"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Restatw/Telegram.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Restatw/Telegram/issues"
+  },
+  "homepage": "https://github.com/Restatw/Telegram#readme"
 }
