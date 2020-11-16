@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Telegram = void 0;
 require("reflect-metadata");
-const http_1 = require("./core/http");
 require("es6-shim");
+const http_1 = require("./core/http");
 const decorators_1 = require("class-transformer/decorators");
 var Telegram;
 (function (Telegram) {
