@@ -471,8 +471,6 @@ export module Telegram {
                     new TelegramHttp()
                         .setJsonBody(
                             {
-                                token,
-                                method,
                                 request
                             }
                         )
