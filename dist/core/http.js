@@ -56,10 +56,6 @@ class TelegramHttp extends kernel_1.HttpApi.ApiRequsetStream {
             error(e);
         }
     }
-    // MiddleResponseDataCheck 提供除錯
-    static MiddleResponseDataCheck(res) {
-        console.log(res);
-    }
     // decode 處理回傳訊息的格式成可以辨識的 JSON
     static decode(data) {
         let strData = data.toString();

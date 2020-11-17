@@ -61,11 +61,6 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
         catch (e) { error(e) }
     }
 
-    // MiddleResponseDataCheck 提供除錯
-    static MiddleResponseDataCheck(res): void {
-        console.log(res)
-    }
-
     // decode 處理回傳訊息的格式成可以辨識的 JSON
     static decode(data: http.IncomingMessage): string {
         let strData = data.toString();

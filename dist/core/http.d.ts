@@ -8,6 +8,5 @@ export declare class TelegramHttp extends HttpApi.ApiRequsetStream {
     setDir: (token: string, method: string) => TelegramHttp;
     setJsonBody: (v: any) => TelegramHttp;
     reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void;
-    static MiddleResponseDataCheck(res: any): void;
     static decode(data: http.IncomingMessage): string;
 }

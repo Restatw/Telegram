@@ -42,7 +42,6 @@ var HttpApi;
             };
             this.sendHttpRequest = (callback, error) => {
                 let res = this.request(this, callback);
-                res.on('error', error);
                 res.write(this.getBody());
                 res.end();
             };

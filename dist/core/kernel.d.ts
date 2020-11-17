@@ -47,7 +47,7 @@ export declare namespace HttpApi {
         getTimeout: () => number;
         setBody: (v: any) => any;
         getBody: () => any;
-        request: (option: any, callback?: RequestCallback) => http.ClientRequest;
+        request: (option: ApiRequsetStream, callback?: RequestCallback) => http.ClientRequest;
         sendHttpRequest: (callback: RequestCallback, error: RequestError) => void;
     }
 }

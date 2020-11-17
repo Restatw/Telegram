@@ -65,7 +65,7 @@ export namespace HttpApi {
         setBody = (v: any):  any => { this.body = v ; return this }
         getBody = (): any => { return this.body }
 
-        request = (option: any, callback?: RequestCallback ): http.ClientRequest => {
+        request = (option: ApiRequsetStream, callback?: RequestCallback ): http.ClientRequest => {
             return ( this.ssl ? https : http ).request(option,(res) => {  
                 res.on('data', callback) 
             }) 
@@ -73,7 +73,6 @@ export namespace HttpApi {
 
         sendHttpRequest = (callback: RequestCallback, error: RequestError) => {
             let res = this.request( this, callback )
-            res.on('error',error)
             res.write(this.getBody())
             res.end()
         }
