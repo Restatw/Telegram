@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import 'es6-shim';
 import { TelegramHttp } from './core/http'
 import { Type } from 'class-transformer/decorators';
+import { plainToClass } from 'class-transformer';
 
 export type InputFile = string
 export type InlineKeyboardMarkup = any
@@ -12,6 +13,11 @@ export type TelegramBotMethod = string
 
 export module Telegram {
     export module Bot {
+
+        export class Response<T> {
+            ok: boolean
+            result: T
+        }
 
         export class User {
             id: number
@@ -168,6 +174,7 @@ export module Telegram {
             offset: number
             length: number
             url?: string
+            @Type(()=>User)
             user?: User
             language?: string
         }
@@ -182,6 +189,7 @@ export module Telegram {
             file_name: string
             mime_type: string
             file_size: number
+            @Type(()=>PhotoSize)
             thumb: PhotoSize
         }
 
@@ -201,9 +209,11 @@ export module Telegram {
             width: number
             height: number
             is_animated: boolean
+            @Type(()=>PhotoSize)
             thumb?: PhotoSize
             emoji?: string
             set_name?: string
+            @Type(()=>MaskPosition)
             mask_position?: MaskPosition
             file_size?: number
         }
@@ -235,6 +245,7 @@ export module Telegram {
             file_unique_id: string
             length: number
             duration: number
+            @Type(()=>PhotoSize)
             thumb: PhotoSize
             file_size: number
         }
@@ -462,12 +473,12 @@ export module Telegram {
             public static PARSE_MODE_MARKDOWN = "Markdown"
 
             // requestAPI 發起 Telegram Api Request 
-            public static requestAPI = (
+            public static requestAPI = <T>(
                 token?: string,
                 method?: TelegramBotMethod,
                 request?: any
-            ): Promise<any> => {
-                return new Promise<any>((resolve, reject) => {
+            ): Promise<Response<T>> => {
+                return new Promise<Response<T>>((resolve, reject) => {
                     new TelegramHttp()
                         .setJsonBody({...request})
                         .reqHttpBotApi(
@@ -485,8 +496,8 @@ export module Telegram {
             // Telegram Api getMe
             public static getMe = (
                 token: string,
-            ): Promise<any> => {
-                return api.requestAPI(
+            ) => {
+                return api.requestAPI<User>(
                     token,
                     "getMe"
                 )
@@ -505,7 +516,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply,
             ): Promise<any> => {
-                return api.requestAPI(
+                return api.requestAPI<Message> (
                     token,
                     "sendMessage",
                     {
@@ -947,7 +958,7 @@ export module Telegram {
                 token: string,
                 chat_id: number
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Chat>(
                     token,
                     "getChat",
                     {

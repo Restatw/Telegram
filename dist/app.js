@@ -15,6 +15,9 @@ var Telegram;
 (function (Telegram) {
     let Bot;
     (function (Bot) {
+        class Response {
+        }
+        Bot.Response = Response;
         class User {
         }
         Bot.User = User;
@@ -124,10 +127,16 @@ var Telegram;
         // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
         class MessageEntity {
         }
+        __decorate([
+            decorators_1.Type(() => User)
+        ], MessageEntity.prototype, "user", void 0);
         Bot.MessageEntity = MessageEntity;
         // This object represents an audio file to be treated as music by the Telegram clients.
         class Audio {
         }
+        __decorate([
+            decorators_1.Type(() => PhotoSize)
+        ], Audio.prototype, "thumb", void 0);
         Bot.Audio = Audio;
         // This object represents one size of a photo or a file / sticker thumbnail.
         class PhotoSize {
@@ -136,6 +145,12 @@ var Telegram;
         // This object represents a sticker.
         class Sticker {
         }
+        __decorate([
+            decorators_1.Type(() => PhotoSize)
+        ], Sticker.prototype, "thumb", void 0);
+        __decorate([
+            decorators_1.Type(() => MaskPosition)
+        ], Sticker.prototype, "mask_position", void 0);
         Bot.Sticker = Sticker;
         // This object describes the position on faces where a mask should be placed by default.
         class MaskPosition {
@@ -148,6 +163,9 @@ var Telegram;
         // This object represents a video message (available in Telegram apps as of v.4.0).
         class VideoNote {
         }
+        __decorate([
+            decorators_1.Type(() => PhotoSize)
+        ], VideoNote.prototype, "thumb", void 0);
         Bot.VideoNote = VideoNote;
         // This object represents a voice note.
         class Voice {
