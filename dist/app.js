@@ -444,7 +444,7 @@ var Telegram;
         api.requestAPI = (token, method, request) => {
             return new Promise((resolve, reject) => {
                 new http_1.TelegramHttp()
-                    .setJsonBody(request)
+                    .setJsonBody(Object.assign({}, request))
                     .reqHttpBotApi(token, method, (res) => {
                     resolve(res);
                 }, (err) => {

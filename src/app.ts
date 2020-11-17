@@ -469,7 +469,7 @@ export module Telegram {
             ): Promise<any> => {
                 return new Promise<any>((resolve, reject) => {
                     new TelegramHttp()
-                        .setJsonBody(request)
+                        .setJsonBody({...request})
                         .reqHttpBotApi(
                             token,
                             method,
