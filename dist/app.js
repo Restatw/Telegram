@@ -474,7 +474,7 @@ var Telegram;
         api.getMe = (token) => {
             return api.requestAPI(token, "getMe");
         };
-        // Telegram Api getMe
+        // Telegram Api sendMessage
         api.sendMessage = (
         // bot parameter
         token, 
@@ -488,6 +488,16 @@ var Telegram;
                 disable_notification,
                 reply_to_message_id,
                 reply_markup
+            });
+        };
+        api.deleteMessage = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, message_id) => {
+            return api.requestAPI(token, "deleteMessage", {
+                chat_id,
+                message_id
             });
         };
         api.forwardMessage = (

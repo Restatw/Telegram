@@ -503,7 +503,7 @@ export module Telegram {
                 )
             }
 
-            // Telegram Api getMe
+            // Telegram Api sendMessage
             public static sendMessage = (
                 // bot parameter
                 token: string,
@@ -527,6 +527,23 @@ export module Telegram {
                         disable_notification,
                         reply_to_message_id,
                         reply_markup
+                    }
+                )
+            }
+
+            public static deleteMessage = (
+                // bot parameter
+                token: string,
+                // api data
+                chat_id: string | number,
+                message_id: number
+            ) => {
+                return api.requestAPI<any>(
+                    token,
+                    "deleteMessage",
+                    {
+                        chat_id,
+                        message_id
                     }
                 )
             }
