@@ -13,7 +13,8 @@
   "dependencies": {
     "class-transformer": "^0.3.1",
     "es6-shim": "^0.35.6",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "ts-node": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.7"

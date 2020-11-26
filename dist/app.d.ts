@@ -1,10 +1,106 @@
 import 'reflect-metadata';
 import 'es6-shim';
 export declare type InputFile = string;
-export declare type InlineKeyboardMarkup = any;
-export declare type ReplyKeyboardMarkup = any;
-export declare type ReplyKeyboardRemove = any;
-export declare type ForceReply = any;
+export declare class InlineKeyboardMarkup {
+    inline_keyboard: Array<Array<InlineKeyboardButton>>;
+}
+export declare class InlineKeyboardButton {
+    text: string;
+    url?: string;
+    login_url?: LoginUrl;
+    callback_data?: string;
+    switch_inline_query?: string;
+    switch_inline_query_current_chat?: string;
+    callback_game?: CallbackGame;
+    pay?: boolean;
+}
+export declare class LoginUrl {
+    /**
+     * An HTTP URL to be opened with user authorization data added to the query string when the button is pressed.
+     * If the user refuses to provide authorization data, the original URL without information about the user will be opened.
+     * The data added is the same as described in Receiving authorization data.
+     * NOTE: You must always check the hash of the received data to verify the authentication and the integrity of the data as described in Checking authorization.
+     *
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    url: string;
+    /**
+     * Optional. New text of the button in forwarded messages.
+     *
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    forward_text?: string;
+    /**
+     * Optional. Username of a bot, which will be used for user authorization.
+     * See Setting up a bot for more details.
+     * If not specified, the current bot's username will be assumed.
+     * The url's domain must be the same as the domain linked with the bot.
+     * See Linking your domain to the bot for more details.
+     *
+     * @type {string}
+     * @memberof LoginUrl
+     */
+    bot_username?: string;
+    /**
+     * Optional. Pass True to request the permission for your bot to send messages to the user.
+     *
+     * @type {boolean}
+     * @memberof LoginUrl
+     */
+    request_write_access?: boolean;
+}
+export declare class CallbackGame {
+}
+/**
+ * KeyboardButton
+ * This object represents one button of the reply keyboard.
+ * For simple text buttons String can be used instead of this object to specify text of the button.
+ * Optional fields request_contact, request_location, and request_poll are mutually exclusive.
+ *
+ * @export
+ * @class ReplyKeyboardMarkup
+ */
+export declare class ReplyKeyboardMarkup {
+    keyboard: Array<Array<KeyboardButton>>;
+}
+export declare class KeyboardButton {
+    /**
+     * text
+     * Text of the button. If none of the optional fields are used, it will be sent as a message when the button is pressed
+     * @type {string}
+     * @memberof KeyboardButton
+     */
+    text: string;
+    /**
+     * request_contact
+     * Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only
+     * @type {boolean}
+     * @memberof KeyboardButton
+     */
+    request_contact?: boolean;
+    /**
+     * request_location
+     * Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only
+     * @type {boolean}
+     * @memberof KeyboardButton
+     */
+    request_location?: boolean;
+    /**
+     * request_poll
+     * Optional. If specified, the user will be asked to create a poll and send it to the bot when the button is pressed. Available in private chats only
+     * @type {KeyboardButtonPollType}
+     * @memberof KeyboardButton
+     */
+    request_poll?: KeyboardButtonPollType;
+}
+export declare class KeyboardButtonPollType {
+}
+export declare class ReplyKeyboardRemove {
+}
+export declare class ForceReply {
+}
 export declare type TelegramBotMethod = string;
 export declare module Telegram {
     module Bot {
@@ -112,7 +208,7 @@ export declare module Telegram {
             connected_website: string;
             passport_data?: PassportData;
             proximity_alert_triggered?: ProximityAlertTriggered;
-            replay_markup?: InlineKeyboardMarkup;
+            replay_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
             getFrom(): User;
             getChat(): Chat;
         }

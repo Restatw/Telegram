@@ -6,11 +6,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Telegram = void 0;
+exports.Telegram = exports.ForceReply = exports.ReplyKeyboardRemove = exports.KeyboardButtonPollType = exports.KeyboardButton = exports.ReplyKeyboardMarkup = exports.CallbackGame = exports.LoginUrl = exports.InlineKeyboardButton = exports.InlineKeyboardMarkup = void 0;
 require("reflect-metadata");
 require("es6-shim");
 const http_1 = require("./core/http");
 const decorators_1 = require("class-transformer/decorators");
+// export type InlineKeyboardMarkup = any
+class InlineKeyboardMarkup {
+}
+exports.InlineKeyboardMarkup = InlineKeyboardMarkup;
+class InlineKeyboardButton {
+}
+exports.InlineKeyboardButton = InlineKeyboardButton;
+class LoginUrl {
+}
+exports.LoginUrl = LoginUrl;
+class CallbackGame {
+}
+exports.CallbackGame = CallbackGame;
+// export type ReplyKeyboardMarkup = any
+/**
+ * KeyboardButton
+ * This object represents one button of the reply keyboard.
+ * For simple text buttons String can be used instead of this object to specify text of the button.
+ * Optional fields request_contact, request_location, and request_poll are mutually exclusive.
+ *
+ * @export
+ * @class ReplyKeyboardMarkup
+ */
+class ReplyKeyboardMarkup {
+}
+exports.ReplyKeyboardMarkup = ReplyKeyboardMarkup;
+class KeyboardButton {
+}
+exports.KeyboardButton = KeyboardButton;
+class KeyboardButtonPollType {
+}
+exports.KeyboardButtonPollType = KeyboardButtonPollType;
+// export type ReplyKeyboardRemove = any
+class ReplyKeyboardRemove {
+}
+exports.ReplyKeyboardRemove = ReplyKeyboardRemove;
+// export type ForceReply = any
+class ForceReply {
+}
+exports.ForceReply = ForceReply;
 var Telegram;
 (function (Telegram) {
     let Bot;
