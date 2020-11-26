@@ -440,6 +440,7 @@ export declare module Telegram {
             static requestAPI: <T>(token?: string, method?: TelegramBotMethod, request?: any) => Promise<Response<T>>;
             static getMe: (token: string) => Promise<Response<User>>;
             static sendMessage: (token: string, chat_id: number, text: string, parse_mode?: string, disable_web_page_preview?: boolean, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
+            static deleteMessage: (token: string, chat_id: string | number, message_id: number) => Promise<Response<any>>;
             static forwardMessage: (token: string, chat_id: number, from_chat_id: string | number, disable_notification?: boolean, message_id?: number) => Promise<any>;
             static sendPhoto: (token: string, chat_id: number, photo: string, caption?: string, parse_mode?: string, disable_notification?: boolean, reply_to_message_id?: number) => Promise<any>;
             static sendAudio: (token: string, chat_id: number, audio: string, caption?: string, parse_mode?: string, duration?: number, performer?: string, title?: string, thumb?: string, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<any>;
