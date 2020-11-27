@@ -593,6 +593,8 @@ export module Telegram {
                 return this.data
             }
 
+            date: number
+
             game_short_name?: string
         }
 

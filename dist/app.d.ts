@@ -431,6 +431,7 @@ export declare module Telegram {
             chat_instance: string;
             data: string;
             getData(): string;
+            date: number;
             game_short_name?: string;
         }
         class api {
