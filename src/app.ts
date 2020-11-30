@@ -1081,7 +1081,7 @@ export module Telegram {
             public static editMessageText(
                 token: string,
                 chat_id: number,
-                message_id: string,
+                message_id: number,
                 inline_message_id: string,
                 text: string,
                 parse_mode?: string,
