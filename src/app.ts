@@ -1088,7 +1088,7 @@ export module Telegram {
                 disable_web_page_preview?: boolean,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "editMessageText",
                     {
