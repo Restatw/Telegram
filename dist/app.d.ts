@@ -212,6 +212,10 @@ export declare module Telegram {
             getFrom(): User;
             getChat(): Chat;
         }
+        class Document {
+        }
+        class Animation {
+        }
         class ProximityAlertTriggered {
             traveler: User;
             watcher: User;

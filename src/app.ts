@@ -290,6 +290,15 @@ export module Telegram {
             }
         }
 
+
+        export class Document {
+
+        }
+
+        export class Animation {
+            
+        }
+
         export class ProximityAlertTriggered {
             @Type(()=>User)
             traveler: User

@@ -155,6 +155,12 @@ var Telegram;
             decorators_1.Type(() => ProximityAlertTriggered)
         ], Message.prototype, "proximity_alert_triggered", void 0);
         Bot.Message = Message;
+        class Document {
+        }
+        Bot.Document = Document;
+        class Animation {
+        }
+        Bot.Animation = Animation;
         class ProximityAlertTriggered {
         }
         __decorate([
