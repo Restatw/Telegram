@@ -2,7 +2,6 @@ import 'reflect-metadata';
 import 'es6-shim';
 import { TelegramHttp } from './core/http'
 import { Type } from 'class-transformer/decorators';
-import { plainToClass } from 'class-transformer';
 
 export type InputFile = string
 
@@ -1127,7 +1126,7 @@ export module Telegram {
             public static getChatAdministrators(
                 token: string,
                 chat_id: number
-            ) : Promise<Response<any[]>> {
+            ) : Promise<Response<Array<any>>> {
                 return api.requestAPI<Array<any>>(
                     token,
                     "getChatAdministrators",
