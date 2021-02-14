@@ -12,6 +12,7 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "class-transformer": "^0.3.1",
     "es6-shim": "^0.35.6",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^9.0.0"
