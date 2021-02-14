@@ -1127,7 +1127,7 @@ export module Telegram {
             public static getChatAdministrators(
                 token: string,
                 chat_id: number
-            ) {
+            ) : Promise<Response<any[]>> {
                 return api.requestAPI<Array<any>>(
                     token,
                     "getChatAdministrators",
