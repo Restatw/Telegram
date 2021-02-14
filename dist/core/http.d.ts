@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import * as http from 'http';
 import { HttpApi } from './kernel';
 export declare type TelgramResponse = (data: any) => void;

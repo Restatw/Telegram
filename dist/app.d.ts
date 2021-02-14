@@ -463,7 +463,7 @@ export declare module Telegram {
             static getFile(token: string, file_id: string): Promise<Response<unknown>>;
             static editMessageText(token: string, chat_id: number, message_id: number, inline_message_id: string, text: string, parse_mode?: string, disable_web_page_preview?: boolean, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply): Promise<Response<Message>>;
             static getChat(token: string, chat_id: number): Promise<Response<Chat>>;
-            static getChatAdministrators(token: string, chat_id: number): Promise<Response<unknown>>;
+            static getChatAdministrators(token: string, chat_id: number): Promise<Response<Array<any>>>;
             static setMyCommands(token: string, commands: string): Promise<Response<unknown>>;
             static getMyCommands(token: string): Promise<Response<unknown>>;
         }

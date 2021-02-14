@@ -1,6 +1,9 @@
-import * as http from 'http';
-import * as https from 'https';
-export var HttpApi;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HttpApi = void 0;
+const http = require("http");
+const https = require("https");
+var HttpApi;
 (function (HttpApi) {
     class ApiRequsetStream {
         constructor() {
@@ -45,4 +48,4 @@ export var HttpApi;
         }
     }
     HttpApi.ApiRequsetStream = ApiRequsetStream;
-})(HttpApi || (HttpApi = {}));
+})(HttpApi = exports.HttpApi || (exports.HttpApi = {}));

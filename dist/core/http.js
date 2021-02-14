@@ -1,6 +1,9 @@
-import { HttpApi } from './kernel';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TelegramHttp = void 0;
+const kernel_1 = require("./kernel");
 // Telegram Http 請求處理格式與編碼處理方法
-export class TelegramHttp extends HttpApi.ApiRequsetStream {
+class TelegramHttp extends kernel_1.HttpApi.ApiRequsetStream {
     // 初始化基本 Domain Port Method
     constructor() {
         super();
@@ -60,3 +63,4 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
         return jsonParse;
     }
 }
+exports.TelegramHttp = TelegramHttp;

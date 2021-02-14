@@ -1,24 +1,29 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") return Reflect.decorate(decorators, target, key, desc);
-    switch (arguments.length) {
-        case 2: return decorators.reduceRight(function(o, d) { return (d && d(o)) || o; }, target);
-        case 3: return decorators.reduceRight(function(o, d) { return (d && d(target, key)), void 0; }, void 0);
-        case 4: return decorators.reduceRight(function(o, d) { return (d && d(target, key, o)) || o; }, desc);
-    }
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-import 'reflect-metadata';
-import 'es6-shim';
-import { TelegramHttp } from './core/http';
-import { Type } from 'class-transformer/decorators';
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Telegram = exports.ForceReply = exports.ReplyKeyboardRemove = exports.KeyboardButtonPollType = exports.KeyboardButton = exports.ReplyKeyboardMarkup = exports.CallbackGame = exports.LoginUrl = exports.InlineKeyboardButton = exports.InlineKeyboardMarkup = void 0;
+require("reflect-metadata");
+require("es6-shim");
+const http_1 = require("./core/http");
+const decorators_1 = require("class-transformer/decorators");
 // export type InlineKeyboardMarkup = any
-export class InlineKeyboardMarkup {
+class InlineKeyboardMarkup {
 }
-export class InlineKeyboardButton {
+exports.InlineKeyboardMarkup = InlineKeyboardMarkup;
+class InlineKeyboardButton {
 }
-export class LoginUrl {
+exports.InlineKeyboardButton = InlineKeyboardButton;
+class LoginUrl {
 }
-export class CallbackGame {
+exports.LoginUrl = LoginUrl;
+class CallbackGame {
 }
+exports.CallbackGame = CallbackGame;
 // export type ReplyKeyboardMarkup = any
 /**
  * KeyboardButton
@@ -29,21 +34,26 @@ export class CallbackGame {
  * @export
  * @class ReplyKeyboardMarkup
  */
-export class ReplyKeyboardMarkup {
+class ReplyKeyboardMarkup {
 }
-export class KeyboardButton {
+exports.ReplyKeyboardMarkup = ReplyKeyboardMarkup;
+class KeyboardButton {
 }
-export class KeyboardButtonPollType {
+exports.KeyboardButton = KeyboardButton;
+class KeyboardButtonPollType {
 }
+exports.KeyboardButtonPollType = KeyboardButtonPollType;
 // export type ReplyKeyboardRemove = any
-export class ReplyKeyboardRemove {
+class ReplyKeyboardRemove {
 }
+exports.ReplyKeyboardRemove = ReplyKeyboardRemove;
 // export type ForceReply = any
-export class ForceReply {
+class ForceReply {
 }
-export var Telegram;
+exports.ForceReply = ForceReply;
+var Telegram;
 (function (Telegram) {
-    var Bot;
+    let Bot;
     (function (Bot) {
         class Response {
         }
@@ -65,12 +75,6 @@ export var Telegram;
         }
         Bot.ChatLocation = ChatLocation;
         class Message {
-            constructor() {
-                this.delete_chat_photo = true;
-                this.group_chat_created = true;
-                this.supergroup_chat_created = true;
-                this.channel_chat_created = true;
-            }
             getFrom() {
                 return this.from;
             }
@@ -79,77 +83,77 @@ export var Telegram;
             }
         }
         __decorate([
-            Type(() => User)
-        ], Message.prototype, "from");
+            decorators_1.Type(() => User)
+        ], Message.prototype, "from", void 0);
         __decorate([
-            Type(() => Chat)
-        ], Message.prototype, "chat");
+            decorators_1.Type(() => Chat)
+        ], Message.prototype, "chat", void 0);
         __decorate([
-            Type(() => User)
-        ], Message.prototype, "forward_from");
+            decorators_1.Type(() => User)
+        ], Message.prototype, "forward_from", void 0);
         __decorate([
-            Type(() => Chat)
-        ], Message.prototype, "forward_from_chat");
+            decorators_1.Type(() => Chat)
+        ], Message.prototype, "forward_from_chat", void 0);
         __decorate([
-            Type(() => Message)
-        ], Message.prototype, "reply_to_message");
+            decorators_1.Type(() => Message)
+        ], Message.prototype, "reply_to_message", void 0);
         __decorate([
-            Type(() => User)
-        ], Message.prototype, "via_bot");
+            decorators_1.Type(() => User)
+        ], Message.prototype, "via_bot", void 0);
         __decorate([
-            Type(() => Animation)
-        ], Message.prototype, "animation");
+            decorators_1.Type(() => Animation)
+        ], Message.prototype, "animation", void 0);
         __decorate([
-            Type(() => Audio)
-        ], Message.prototype, "audio");
+            decorators_1.Type(() => Audio)
+        ], Message.prototype, "audio", void 0);
         __decorate([
-            Type(() => Document)
-        ], Message.prototype, "document");
+            decorators_1.Type(() => Document)
+        ], Message.prototype, "document", void 0);
         __decorate([
-            Type(() => Sticker)
-        ], Message.prototype, "sticker");
+            decorators_1.Type(() => Sticker)
+        ], Message.prototype, "sticker", void 0);
         __decorate([
-            Type(() => Video)
-        ], Message.prototype, "video");
+            decorators_1.Type(() => Video)
+        ], Message.prototype, "video", void 0);
         __decorate([
-            Type(() => VideoNote)
-        ], Message.prototype, "video_note");
+            decorators_1.Type(() => VideoNote)
+        ], Message.prototype, "video_note", void 0);
         __decorate([
-            Type(() => Voice)
-        ], Message.prototype, "voice");
+            decorators_1.Type(() => Voice)
+        ], Message.prototype, "voice", void 0);
         __decorate([
-            Type(() => Contact)
-        ], Message.prototype, "contact");
+            decorators_1.Type(() => Contact)
+        ], Message.prototype, "contact", void 0);
         __decorate([
-            Type(() => Dice)
-        ], Message.prototype, "dice");
+            decorators_1.Type(() => Dice)
+        ], Message.prototype, "dice", void 0);
         __decorate([
-            Type(() => Game)
-        ], Message.prototype, "game");
+            decorators_1.Type(() => Game)
+        ], Message.prototype, "game", void 0);
         __decorate([
-            Type(() => Poll)
-        ], Message.prototype, "poll");
+            decorators_1.Type(() => Poll)
+        ], Message.prototype, "poll", void 0);
         __decorate([
-            Type(() => Venue)
-        ], Message.prototype, "venue");
+            decorators_1.Type(() => Venue)
+        ], Message.prototype, "venue", void 0);
         __decorate([
-            Type(() => Location)
-        ], Message.prototype, "location");
+            decorators_1.Type(() => Location)
+        ], Message.prototype, "location", void 0);
         __decorate([
-            Type(() => User)
-        ], Message.prototype, "left_chat_member");
+            decorators_1.Type(() => User)
+        ], Message.prototype, "left_chat_member", void 0);
         __decorate([
-            Type(() => Invoice)
-        ], Message.prototype, "invoice");
+            decorators_1.Type(() => Invoice)
+        ], Message.prototype, "invoice", void 0);
         __decorate([
-            Type(() => SuccessfulPayment)
-        ], Message.prototype, "successful_payment");
+            decorators_1.Type(() => SuccessfulPayment)
+        ], Message.prototype, "successful_payment", void 0);
         __decorate([
-            Type(() => PassportData)
-        ], Message.prototype, "passport_data");
+            decorators_1.Type(() => PassportData)
+        ], Message.prototype, "passport_data", void 0);
         __decorate([
-            Type(() => ProximityAlertTriggered)
-        ], Message.prototype, "proximity_alert_triggered");
+            decorators_1.Type(() => ProximityAlertTriggered)
+        ], Message.prototype, "proximity_alert_triggered", void 0);
         Bot.Message = Message;
         class Document {
         }
@@ -160,25 +164,25 @@ export var Telegram;
         class ProximityAlertTriggered {
         }
         __decorate([
-            Type(() => User)
-        ], ProximityAlertTriggered.prototype, "traveler");
+            decorators_1.Type(() => User)
+        ], ProximityAlertTriggered.prototype, "traveler", void 0);
         __decorate([
-            Type(() => User)
-        ], ProximityAlertTriggered.prototype, "watcher");
+            decorators_1.Type(() => User)
+        ], ProximityAlertTriggered.prototype, "watcher", void 0);
         Bot.ProximityAlertTriggered = ProximityAlertTriggered;
         // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
         class MessageEntity {
         }
         __decorate([
-            Type(() => User)
-        ], MessageEntity.prototype, "user");
+            decorators_1.Type(() => User)
+        ], MessageEntity.prototype, "user", void 0);
         Bot.MessageEntity = MessageEntity;
         // This object represents an audio file to be treated as music by the Telegram clients.
         class Audio {
         }
         __decorate([
-            Type(() => PhotoSize)
-        ], Audio.prototype, "thumb");
+            decorators_1.Type(() => PhotoSize)
+        ], Audio.prototype, "thumb", void 0);
         Bot.Audio = Audio;
         // This object represents one size of a photo or a file / sticker thumbnail.
         class PhotoSize {
@@ -188,11 +192,11 @@ export var Telegram;
         class Sticker {
         }
         __decorate([
-            Type(() => PhotoSize)
-        ], Sticker.prototype, "thumb");
+            decorators_1.Type(() => PhotoSize)
+        ], Sticker.prototype, "thumb", void 0);
         __decorate([
-            Type(() => MaskPosition)
-        ], Sticker.prototype, "mask_position");
+            decorators_1.Type(() => MaskPosition)
+        ], Sticker.prototype, "mask_position", void 0);
         Bot.Sticker = Sticker;
         // This object describes the position on faces where a mask should be placed by default.
         class MaskPosition {
@@ -206,8 +210,8 @@ export var Telegram;
         class VideoNote {
         }
         __decorate([
-            Type(() => PhotoSize)
-        ], VideoNote.prototype, "thumb");
+            decorators_1.Type(() => PhotoSize)
+        ], VideoNote.prototype, "thumb", void 0);
         Bot.VideoNote = VideoNote;
         // This object represents a voice note.
         class Voice {
@@ -224,8 +228,8 @@ export var Telegram;
         class Game {
         }
         __decorate([
-            Type(() => Animation)
-        ], Game.prototype, "animation");
+            decorators_1.Type(() => Animation)
+        ], Game.prototype, "animation", void 0);
         Bot.Game = Game;
         class Poll {
         }
@@ -239,8 +243,8 @@ export var Telegram;
         class Venue {
         }
         __decorate([
-            Type(() => Location)
-        ], Venue.prototype, "location");
+            decorators_1.Type(() => Location)
+        ], Venue.prototype, "location", void 0);
         Bot.Venue = Venue;
         class Invoice {
         }
@@ -251,8 +255,8 @@ export var Telegram;
         class OrderInfo {
         }
         __decorate([
-            Type(() => ShippingOption)
-        ], OrderInfo.prototype, "shipping_address");
+            decorators_1.Type(() => ShippingOption)
+        ], OrderInfo.prototype, "shipping_address", void 0);
         Bot.OrderInfo = OrderInfo;
         class ShippingAddress {
         }
@@ -269,8 +273,8 @@ export var Telegram;
         class EncryptedPassportElement {
         }
         __decorate([
-            Type(() => PassportFile)
-        ], EncryptedPassportElement.prototype, "front_side");
+            decorators_1.Type(() => PassportFile)
+        ], EncryptedPassportElement.prototype, "front_side", void 0);
         Bot.EncryptedPassportElement = EncryptedPassportElement;
         class EncryptedCredentials {
         }
@@ -299,11 +303,11 @@ export var Telegram;
             }
         }
         __decorate([
-            Type(() => Message)
-        ], RequestBody.prototype, "message");
+            decorators_1.Type(() => Message)
+        ], RequestBody.prototype, "message", void 0);
         __decorate([
-            Type(() => CallbackQuery)
-        ], RequestBody.prototype, "callback_query");
+            decorators_1.Type(() => CallbackQuery)
+        ], RequestBody.prototype, "callback_query", void 0);
         Bot.RequestBody = RequestBody;
         class CallbackQuery {
             getFrom() {
@@ -317,13 +321,185 @@ export var Telegram;
             }
         }
         __decorate([
-            Type(() => User)
-        ], CallbackQuery.prototype, "from");
+            decorators_1.Type(() => User)
+        ], CallbackQuery.prototype, "from", void 0);
         __decorate([
-            Type(() => Message)
-        ], CallbackQuery.prototype, "message");
+            decorators_1.Type(() => Message)
+        ], CallbackQuery.prototype, "message", void 0);
         Bot.CallbackQuery = CallbackQuery;
         class api {
+            static sendAnimation(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, animation, duration, width, height, thumb, caption, parse_mode, supports_streaming, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendAnimation", {
+                    chat_id,
+                    animation,
+                    duration,
+                    width,
+                    height,
+                    thumb,
+                    caption,
+                    parse_mode,
+                    supports_streaming,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup,
+                });
+            }
+            static sendVoice(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, voice, caption, parse_mode, duration, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendVoice", {
+                    chat_id,
+                    voice,
+                    caption,
+                    parse_mode,
+                    duration,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup,
+                });
+            }
+            static sendVideoNote(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, video_note, duration, length, thumb, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendVideoNote", {
+                    chat_id,
+                    video_note,
+                    duration,
+                    length,
+                    thumb,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup,
+                });
+            }
+            static sendMediaGroup(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, media, disable_notification, reply_to_message_id) {
+                return api.requestAPI(token, "sendMediaGroup", {
+                    chat_id,
+                    media,
+                    disable_notification,
+                    reply_to_message_id,
+                });
+            }
+            static sendLocation(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, latitude, longitude, live_period, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendLocation", {
+                    chat_id,
+                    latitude,
+                    longitude,
+                    live_period,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup
+                });
+            }
+            static sendPoll(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, question, options, is_anonymous, _type, allows_multiple_answers, correct_option_id, explanation, explanation_parse_mode, open_period, close_date, is_closed, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendPoll", {
+                    chat_id,
+                    question,
+                    options,
+                    is_anonymous,
+                    _type,
+                    allows_multiple_answers,
+                    correct_option_id,
+                    explanation,
+                    explanation_parse_mode,
+                    open_period,
+                    close_date,
+                    is_closed,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup
+                });
+            }
+            static sendDice(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, emoji, disable_notification, reply_to_message_id, reply_markup) {
+                return api.requestAPI(token, "sendDice", {
+                    chat_id,
+                    emoji,
+                    disable_notification,
+                    reply_to_message_id,
+                    reply_markup
+                });
+            }
+            static sendChatAction(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, action) {
+                return api.requestAPI(token, "sendChatAction", {
+                    chat_id,
+                    action,
+                });
+            }
+            static getUserProfilePhotos(
+            // bot parameter
+            token, 
+            // api data
+            chat_id, offset, limit) {
+                return api.requestAPI(token, "getUserProfilePhotos", {
+                    chat_id,
+                    offset,
+                    limit
+                });
+            }
+            static getFile(
+            // bot parameter
+            token, 
+            // api data
+            file_id) {
+                return api.requestAPI(token, "getFile", {
+                    file_id
+                });
+            }
+            static editMessageText(token, chat_id, message_id, inline_message_id, text, parse_mode, disable_web_page_preview, reply_markup) {
+                return api.requestAPI(token, "editMessageText", {
+                    chat_id,
+                    message_id,
+                    inline_message_id,
+                    text,
+                    parse_mode,
+                    disable_web_page_preview,
+                    reply_markup
+                });
+            }
+            static getChat(token, chat_id) {
+                return api.requestAPI(token, "getChat", {
+                    chat_id
+                });
+            }
+            static getChatAdministrators(token, chat_id) {
+                return api.requestAPI(token, "getChatAdministrators", {
+                    chat_id
+                });
+            }
+            static setMyCommands(token, commands) {
+                return api.requestAPI(token, "setMyCommands", { commands });
+            }
+            static getMyCommands(token) {
+                return api.requestAPI(token, "getMyCommands");
+            }
         }
         api.PARSE_MODE_MARKDOWN_V2 = "MarkdownV2";
         api.PARSE_MODE_HTML = "HTML";
@@ -331,24 +507,25 @@ export var Telegram;
         // requestAPI 發起 Telegram Api Request 
         api.requestAPI = (token, method, request) => {
             return new Promise((resolve, reject) => {
-                new TelegramHttp()
-                    .setJsonBody({}, ...request);
-            })
-                .reqHttpBotApi(token, method, (res) => {
-                resolve(res);
-            }, (err) => {
-                reject(err);
+                new http_1.TelegramHttp()
+                    .setJsonBody(Object.assign({}, request))
+                    .reqHttpBotApi(token, method, (res) => {
+                    resolve(res);
+                }, (err) => {
+                    reject(err);
+                });
             });
         };
-        Bot.api = api;
-        getMe = (token) => {
+        // Telegram Api getMe
+        api.getMe = (token) => {
             return api.requestAPI(token, "getMe");
         };
-        sendMessage = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, text, parse_mode, disable_web_page_preview, disable_notification, reply_to_message_id, reply_markup) => {
+        // Telegram Api sendMessage
+        api.sendMessage = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, text, parse_mode, disable_web_page_preview, disable_notification, reply_to_message_id, reply_markup) => {
             return api.requestAPI(token, "sendMessage", {
                 chat_id,
                 text,
@@ -359,21 +536,21 @@ export var Telegram;
                 reply_markup
             });
         };
-        deleteMessage = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, message_id) => {
+        api.deleteMessage = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, message_id) => {
             return api.requestAPI(token, "deleteMessage", {
                 chat_id,
                 message_id
             });
         };
-        forwardMessage = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, from_chat_id, disable_notification, message_id) => {
+        api.forwardMessage = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, from_chat_id, disable_notification, message_id) => {
             return api.requestAPI(token, "forwardMessage", {
                 chat_id,
                 from_chat_id,
@@ -381,11 +558,11 @@ export var Telegram;
                 message_id,
             });
         };
-        sendPhoto = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, photo, caption, parse_mode, disable_notification, reply_to_message_id) => {
+        api.sendPhoto = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, photo, caption, parse_mode, disable_notification, reply_to_message_id) => {
             return api.requestAPI(token, "sendPhoto", {
                 chat_id,
                 photo,
@@ -395,11 +572,11 @@ export var Telegram;
                 reply_to_message_id,
             });
         };
-        sendAudio = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, audio, caption, parse_mode, duration, performer, title, thumb, disable_notification, reply_to_message_id, reply_markup) => {
+        api.sendAudio = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, audio, caption, parse_mode, duration, performer, title, thumb, disable_notification, reply_to_message_id, reply_markup) => {
             return api.requestAPI(token, "sendAudio", {
                 chat_id,
                 audio,
@@ -414,11 +591,11 @@ export var Telegram;
                 reply_markup,
             });
         };
-        sendDocument = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, document, thumb, caption, parse_mode, disable_notification, reply_to_message_id, reply_markup) => {
+        api.sendDocument = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, document, thumb, caption, parse_mode, disable_notification, reply_to_message_id, reply_markup) => {
             return api.requestAPI(token, "sendDocument", {
                 chat_id,
                 document,
@@ -430,11 +607,11 @@ export var Telegram;
                 reply_markup,
             });
         };
-        sendVideo = (
-            // bot parameter
-            token, 
-            // api data
-            chat_id, video, duration, width, height, thumb, caption, parse_mode, supports_streaming, disable_notification, reply_to_message_id, reply_markup) => {
+        api.sendVideo = (
+        // bot parameter
+        token, 
+        // api data
+        chat_id, video, duration, width, height, thumb, caption, parse_mode, supports_streaming, disable_notification, reply_to_message_id, reply_markup) => {
             return api.requestAPI(token, "sendVideo", {
                 chat_id,
                 video,
@@ -450,192 +627,6 @@ export var Telegram;
                 reply_markup,
             });
         };
-        sendAnimation(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, animation, string, duration ?  : number, width ?  : number, height ?  : number, thumb ?  : string, caption ?  : string, parse_mode ?  : string, supports_streaming ?  : boolean, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendAnimation", {
-                chat_id,
-                animation,
-                duration,
-                width,
-                height,
-                thumb,
-                caption,
-                parse_mode,
-                supports_streaming,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup,
-            });
-        }
-        sendVoice(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, voice, string, caption ?  : string, parse_mode ?  : string, duration ?  : number, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendVoice", {
-                chat_id,
-                voice,
-                caption,
-                parse_mode,
-                duration,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup,
-            });
-        }
-        sendVideoNote(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, video_note, string, duration ?  : number, length ?  : number, thumb ?  : string, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendVideoNote", {
-                chat_id,
-                video_note,
-                duration,
-                length,
-                thumb,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup,
-            });
-        }
-        sendMediaGroup(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, media, Array < any > , disable_notification ?  : boolean, reply_to_message_id ?  : number);
-        {
-            return api.requestAPI(token, "sendMediaGroup", {
-                chat_id,
-                media,
-                disable_notification,
-                reply_to_message_id,
-            });
-        }
-        sendLocation(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, latitude, number, longitude, number, live_period ?  : number, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendLocation", {
-                chat_id,
-                latitude,
-                longitude,
-                live_period,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup
-            });
-        }
-        sendPoll(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, question, string, options, Array < string > , is_anonymous ?  : boolean, _type ?  : string, allows_multiple_answers ?  : boolean, correct_option_id ?  : number, explanation ?  : string, explanation_parse_mode ?  : string, open_period ?  : number, close_date ?  : number, is_closed ?  : boolean, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendPoll", {
-                chat_id,
-                question,
-                options,
-                is_anonymous,
-                _type,
-                allows_multiple_answers,
-                correct_option_id,
-                explanation,
-                explanation_parse_mode,
-                open_period,
-                close_date,
-                is_closed,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup
-            });
-        }
-        sendDice(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, emoji ?  : string, disable_notification ?  : boolean, reply_to_message_id ?  : number, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "sendDice", {
-                chat_id,
-                emoji,
-                disable_notification,
-                reply_to_message_id,
-                reply_markup
-            });
-        }
-        sendChatAction(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, action ?  : string);
-        {
-            return api.requestAPI(token, "sendChatAction", {
-                chat_id,
-                action,
-            });
-        }
-        getUserProfilePhotos(
-        // bot parameter
-        token, string, 
-        // api data
-        chat_id, number, offset ?  : number, limit ?  : number);
-        {
-            return api.requestAPI(token, "getUserProfilePhotos", {
-                chat_id,
-                offset,
-                limit
-            });
-        }
-        getFile(
-        // bot parameter
-        token, string, 
-        // api data
-        file_id, string);
-        {
-            return api.requestAPI(token, "getFile", {
-                file_id
-            });
-        }
-        editMessageText(token, string, chat_id, number, message_id, number, inline_message_id, string, text, string, parse_mode ?  : string, disable_web_page_preview ?  : boolean, reply_markup ?  : InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply);
-        {
-            return api.requestAPI(token, "editMessageText", {
-                chat_id,
-                message_id,
-                inline_message_id,
-                text,
-                parse_mode,
-                disable_web_page_preview,
-                reply_markup
-            });
-        }
-        getChat(token, string, chat_id, number);
-        {
-            return api.requestAPI(token, "getChat", {
-                chat_id
-            });
-        }
-        getChatAdministrators(token, string, chat_id, number);
-        Promise < Response < Array < any >>> {
-            return: api.requestAPI(token, "getChatAdministrators", {
-                chat_id
-            })
-        };
-        setMyCommands(token, string, commands, string);
-        {
-            return api.requestAPI(token, "setMyCommands", { commands });
-        }
-        getMyCommands(token, string);
-        {
-            return api.requestAPI(token, "getMyCommands");
-        }
+        Bot.api = api;
     })(Bot = Telegram.Bot || (Telegram.Bot = {}));
-})(Telegram || (Telegram = {}));
+})(Telegram = exports.Telegram || (exports.Telegram = {}));

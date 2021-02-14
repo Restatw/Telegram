@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import * as http from 'http';
 export declare namespace HttpApi {
     type RequestError = (err: Error) => void;
@@ -40,13 +41,13 @@ export declare namespace HttpApi {
         getHeaders: () => http.OutgoingHttpHeaders;
         setAuth: (v: string) => any;
         getAuth: () => string;
-        setAgent: (v: any) => any;
-        getAgent: () => any;
+        setAgent: (v: http.Agent) => any;
+        getAgent: () => http.Agent;
         setTimeout: (v: number) => any;
         getTimeout: () => number;
         setBody: (v: any) => any;
         getBody: () => any;
-        request: (option: ApiRequsetStream, callback?: (res: http.IncomingMessage) => void) => http.ClientRequest;
-        sendHttpRequest: (callback: (res: http.IncomingMessage) => void, error: (err: Error) => void) => void;
+        request: (option: ApiRequsetStream, callback?: RequestCallback) => http.ClientRequest;
+        sendHttpRequest: (callback: RequestCallback, error: RequestError) => void;
     }
 }

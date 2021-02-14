@@ -1,5 +1,5 @@
 {
-  "name": "telegram",
+  "name": "resta_telegram_node_api",
   "version": "1.0.0",
   "description": "Telegram Bot api",
   "main": "dist/index.js",
