@@ -1,6 +1,153 @@
 import 'es6-shim';
-import { TelegramHttp } from './http'
 import { Type } from 'class-transformer';
+import * as http from 'http'
+import * as https from 'https'
+export namespace HttpApi {
+    
+    export type RequestError = (err: Error) => void
+    export type RequestCallback = (res: http.IncomingMessage) => void 
+    export class ApiRequsetStream implements http.RequestOptions {
+
+        ssl: boolean 
+        protocol?: string
+        host?:string
+        hostname?:string
+        family?: number
+        port?: number
+        localAddress?: string
+        socketPath?: string;
+        method?: string
+        path?: string
+        headers?: http.OutgoingHttpHeaders
+        auth?: string
+        agent?: http.Agent
+        timeout?: number
+        body?: any
+        
+        setProtocol = (v: string): any => { this.protocol = v ; return this }
+        getProtocol = (): string => { return this.protocol }
+
+        setHostDomain = (v: string): any => { this.host = v ; return this }
+        getHostDomain = () : string => { return this.host }
+
+        setHostname = (v: string): any => { this.hostname = v ; return this }
+        getHostname = (): string => { return this.hostname }
+
+        setFamily = (v: number): any => { this.family = v ; return this }
+        getFamily = (): number => { return this.family }
+
+        setPort = (v: number): any => { this.port = v ; return this }
+        getPort = (): number => { return this.port }
+
+        setLocalAddress = (v: string): any => { this.localAddress = v ; return this }
+        getLocalAddress = (): string => { return this.localAddress }
+        
+        setSocketPath = (v: string): any => { this.socketPath = v ; return this }
+        getSocketPath = (): string => { return this.socketPath }
+
+        setMethod = (v: string): any => { this.method = v ; return this }
+        getMethod = (): string => { return this.method }
+
+        setPath = (v: string): any => { this.path = v ; return this }
+        getPath = (): string => { return this.path }
+
+        setHeaders = (v: http.OutgoingHttpHeaders): any => { this.headers = v ; return this }
+        getHeaders = (): http.OutgoingHttpHeaders => { return this.headers }
+
+        setAuth = (v: string): any => { this.auth = v ; return this }
+        getAuth = (): string => { return this.auth}
+
+        setAgent = (v: http.Agent): any => { this.agent = v ; return this }
+        getAgent = (): http.Agent => { return this.agent }
+        
+        setTimeout = (v: number): any => { this.timeout = v ; return this }
+        getTimeout = (): number => { return this.timeout }
+
+        setBody = (v: any):  any => { this.body = v ; return this }
+        getBody = (): any => { return this.body }
+
+        request = (option: ApiRequsetStream, callback?: RequestCallback ): http.ClientRequest => {
+            return ( this.ssl ? https : http ).request(option,(res) => {  
+                res.on('data', callback) 
+            }) 
+        }
+
+        sendHttpRequest = (callback: RequestCallback, error: RequestError) => {
+            let res = this.request( this, callback )
+            res.write(this.getBody())
+            res.end()
+        }
+    }
+}
+
+
+// Telegam Http Reqest 回傳資料處理方法
+export type TelgramResponse = (data: any) => void
+// Telegram Http reqest 回傳錯誤處理方法
+export type RequestError = (err: Error) => void
+
+// Telegram Http 請求處理格式與編碼處理方法
+export class TelegramHttp extends HttpApi.ApiRequsetStream {
+
+    // 初始化基本 Domain Port Method
+    constructor() {
+        super()
+        this.ssl = true;
+        this.setHostDomain("api.telegram.org")
+            .setPort(443)
+            .setMethod("POST")
+    }
+
+    // setDir 設定動態路徑方法
+    // 依照 Telegram Method 的 Api 呼叫方式
+    // 路徑後第一個參數必須要以下格式
+    // /bot${token}
+    // /bot 為固定數值 ${token} 為呼叫的機器人參數
+    // 詳情請查看 
+    // Telegram Bot Create https://www.toptal.com/python/telegram-bot-tutorial-python
+    // Telegram Bot father https://telegram.me/BotFather
+    // Telegram Bot api https://core.telegram.org/bots/api#message
+    // 路徑會影響呼叫的方法類型與機器人
+    // token: string 為機器人的代號 由 botfather 提供
+    // method 為呼叫的 api 方法 請查看 Telegram bot api
+    setDir = (token: string, method: string): TelegramHttp => {
+        this.setPath(`/bot${token}/${method}`)
+        return this
+    }
+
+    // setJsonBody 設定請求內容
+    // 設定要送給 Telegram bot api 的內容格式
+    // 並且修改 Header 相關設定
+    setJsonBody = (v: any): TelegramHttp => {
+        // Header neet use byte length
+        this.body = JSON.stringify(v)
+        let bodyLength = Buffer.byteLength(this.body)
+        this.setHeaders({
+            'Content-Type': 'application/json;',
+            'Content-Length': bodyLength,
+            'Accept': "*/*",
+            'Connection': "keep-alive",
+        })
+        return this
+    }
+
+    // reqHttpBotApi 提供其他類別實作的簡易呼叫方法
+    // token: string 為機器人的代號 由 botfather 提供
+    // method 為呼叫的 api 方法 請查看 Telegram bot api
+    // success 為 Http Request 正確取得回傳資訊後的處理動作
+    // error 為 Http Request 錯誤處理
+    reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void {
+        try { this.setDir(token, method).sendHttpRequest((res) => { success(TelegramHttp.decode(res)) }, error) }
+        catch (e) { error(e) }
+    }
+
+    // decode 處理回傳訊息的格式成可以辨識的 JSON
+    static decode(data: http.IncomingMessage): string {
+        let strData = data.toString();
+        let jsonParse = JSON.parse(strData)
+        return jsonParse
+    }
+}
 
 export type InputFile = string
 
