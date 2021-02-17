@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import 'es6-shim';
 import { TelegramHttp } from './core/http'
-import { Type } from 'class-transformer/decorators';
+import { Type } from 'class-transformer';
 
 export type InputFile = string
 
