@@ -2,8 +2,8 @@
   "name": "resta_telegram_node_api",
   "version": "1.0.0",
   "description": "Telegram Bot api",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "ts-start": "nodemon src/test.ts",
     "build": "tsc"
