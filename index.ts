@@ -1,5 +1,5 @@
 import 'es6-shim';
-import { TelegramHttp } from './core/http'
+import { TelegramHttp } from './http'
 import { Type } from 'class-transformer';
 
 export type InputFile = string
