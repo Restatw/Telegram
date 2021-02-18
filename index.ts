@@ -842,8 +842,8 @@ export module Telegram {
                 from_chat_id: string | number,
                 disable_notification?: boolean,
                 message_id?: number,
-            ): Promise<any> => {
-                return api.requestAPI(
+            ): Promise<Response<Message>> => {
+                return api.requestAPI<Message>(
                     token,
                     "forwardMessage",
                     {
@@ -865,7 +865,7 @@ export module Telegram {
                 parse_mode?: string,
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
-            ): Promise<any> => {
+            ) => {
                 return api.requestAPI(
                     token,
                     "sendPhoto",
@@ -895,8 +895,8 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply,
-            ): Promise<any> => {
-                return api.requestAPI(
+            ) => {
+                return api.requestAPI<Message>(
                     token,
                     "sendAudio",
                     {
@@ -928,8 +928,8 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply,
-            ): Promise<any> => {
-                return api.requestAPI(
+            ) => {
+                return api.requestAPI<Message>(
                     token,
                     "sendDocument",
                     {
@@ -961,8 +961,8 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply,
-            ): Promise<any> => {
-                return api.requestAPI(
+            ) => {
+                return api.requestAPI<Message>(
                     token,
                     "sendVideo",
                     {
@@ -999,7 +999,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendAnimation",
                     {
@@ -1031,7 +1031,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendVoice",
                     {
@@ -1059,7 +1059,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendVideoNote",
                     {
@@ -1083,7 +1083,7 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendMediaGroup",
                     {
@@ -1106,7 +1106,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendLocation",
                     {
@@ -1140,7 +1140,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendPoll",
                     {
@@ -1172,7 +1172,7 @@ export module Telegram {
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply
             ) {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendDice",
                     {
