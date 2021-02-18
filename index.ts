@@ -866,7 +866,7 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
             ) => {
-                return api.requestAPI(
+                return api.requestAPI<Message>(
                     token,
                     "sendPhoto",
                     {
