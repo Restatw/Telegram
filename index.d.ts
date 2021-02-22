@@ -168,6 +168,7 @@ export declare module Telegram {
         class Response<T> {
             ok: boolean;
             result: T;
+            description: string;
         }
         class User {
             id: number;
@@ -504,6 +505,7 @@ export declare module Telegram {
             static PARSE_MODE_HTML: string;
             static PARSE_MODE_MARKDOWN: string;
             static requestAPI: <T>(token?: string, method?: TelegramBotMethod, request?: any) => Promise<Response<T>>;
+            static setWebhook: (token: string, url: string) => Promise<Response<boolean>>;
             static getMe: (token: string) => Promise<Response<User>>;
             static sendMessage: (token: string, chat_id: number, text: string, parse_mode?: string, disable_web_page_preview?: boolean, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
             static deleteMessage: (token: string, chat_id: string | number, message_id: number) => Promise<Response<any>>;

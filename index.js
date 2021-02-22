@@ -624,6 +624,12 @@ var Telegram;
                 });
             });
         };
+        // Telegram api setWebhook
+        api.setWebhook = (token, url) => {
+            return api.requestAPI(token, "setWebhook", {
+                url
+            });
+        };
         // Telegram Api getMe
         api.getMe = (token) => {
             return api.requestAPI(token, "getMe");

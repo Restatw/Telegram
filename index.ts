@@ -292,6 +292,7 @@ export module Telegram {
         export class Response<T> {
             ok: boolean
             result: T
+            description: string
         }
 
         export class User {
@@ -779,6 +780,20 @@ export module Telegram {
                 })
             }
 
+            // Telegram api setWebhook
+            public static setWebhook = (
+                token: string,
+                url: string
+            ) => {
+                return api.requestAPI<boolean>(
+                    token,
+                    "setWebhook",
+                    {
+                        url
+                    }
+                )
+            }
+
             // Telegram Api getMe
             public static getMe = (
                 token: string,
@@ -788,7 +803,7 @@ export module Telegram {
                     "getMe"
                 )
             }
-
+            
             // Telegram Api sendMessage
             public static sendMessage = (
                 // bot parameter
