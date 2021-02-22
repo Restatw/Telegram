@@ -277,6 +277,22 @@ export declare module Telegram {
         class Document {
         }
         class Animation {
+            file_name: string;
+            mime_type: string;
+            duration: number;
+            width: number;
+            height: number;
+            thumb: Thumb;
+            file_id: string;
+            file_unique_id: string;
+            file_size: number;
+        }
+        class Thumb {
+            file_id: string;
+            file_unique_id: string;
+            file_size: number;
+            width: number;
+            height: number;
         }
         class ProximityAlertTriggered {
             traveler: User;

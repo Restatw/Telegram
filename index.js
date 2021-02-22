@@ -256,7 +256,13 @@ var Telegram;
         Bot.Document = Document;
         class Animation {
         }
+        __decorate([
+            class_transformer_1.Type(() => Thumb)
+        ], Animation.prototype, "thumb", void 0);
         Bot.Animation = Animation;
+        class Thumb {
+        }
+        Bot.Thumb = Thumb;
         class ProximityAlertTriggered {
         }
         __decorate([

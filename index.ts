@@ -438,7 +438,24 @@ export module Telegram {
         }
 
         export class Animation {
-            
+            file_name: string
+            mime_type: string
+            duration: number
+            width: number
+            height: number
+            @Type(()=>Thumb)
+            thumb: Thumb
+            file_id: string
+            file_unique_id: string
+            file_size: number
+        }
+
+        export class Thumb {
+            file_id: string
+            file_unique_id: string
+            file_size: number
+            width: number
+            height: number
         }
 
         export class ProximityAlertTriggered {
