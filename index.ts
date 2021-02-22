@@ -375,21 +375,17 @@ export module Telegram {
             author_signature?: string
             text?: string
             entities?: Array<MessageEntity>
-            @Type(()=>Animation)
-            animation?: Animation
-            @Type(()=>Audio)
-            audio?: Audio
+            animation?: Array<Animation>
+            audio?: Array<Audio>
             @Type(()=>Document)
             document?: Document
             photo?: Array<PhotoSize>
             @Type(()=>Sticker)
             sticker?: Sticker
-            @Type(()=>Video)
-            video?: Video
+            video?: Array<Video>
             @Type(()=>VideoNote)
             video_note?: VideoNote
-            @Type(()=>Voice)
-            voice?: Voice
+            voice?: Array<Voice>
             caption?: string
             caption_entities?: Array<MessageEntity>
             @Type(()=>Contact)

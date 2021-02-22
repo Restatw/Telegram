@@ -209,26 +209,14 @@ var Telegram;
             class_transformer_1.Type(() => User)
         ], Message.prototype, "via_bot", void 0);
         __decorate([
-            class_transformer_1.Type(() => Animation)
-        ], Message.prototype, "animation", void 0);
-        __decorate([
-            class_transformer_1.Type(() => Audio)
-        ], Message.prototype, "audio", void 0);
-        __decorate([
             class_transformer_1.Type(() => Document)
         ], Message.prototype, "document", void 0);
         __decorate([
             class_transformer_1.Type(() => Sticker)
         ], Message.prototype, "sticker", void 0);
         __decorate([
-            class_transformer_1.Type(() => Video)
-        ], Message.prototype, "video", void 0);
-        __decorate([
             class_transformer_1.Type(() => VideoNote)
         ], Message.prototype, "video_note", void 0);
-        __decorate([
-            class_transformer_1.Type(() => Voice)
-        ], Message.prototype, "voice", void 0);
         __decorate([
             class_transformer_1.Type(() => Contact)
         ], Message.prototype, "contact", void 0);

@@ -238,14 +238,14 @@ export declare module Telegram {
             author_signature?: string;
             text?: string;
             entities?: Array<MessageEntity>;
-            animation?: Animation;
-            audio?: Audio;
+            animation?: Array<Animation>;
+            audio?: Array<Audio>;
             document?: Document;
             photo?: Array<PhotoSize>;
             sticker?: Sticker;
-            video?: Video;
+            video?: Array<Video>;
             video_note?: VideoNote;
-            voice?: Voice;
+            voice?: Array<Voice>;
             caption?: string;
             caption_entities?: Array<MessageEntity>;
             contact?: Contact;
