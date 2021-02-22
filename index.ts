@@ -375,7 +375,8 @@ export module Telegram {
             author_signature?: string
             text?: string
             entities?: Array<MessageEntity>
-            animation?: Array<Animation>
+            @Type(()=>Animation)
+            animation?: Animation
             audio?: Array<Audio>
             @Type(()=>Document)
             document?: Document

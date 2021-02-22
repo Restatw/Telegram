@@ -238,7 +238,7 @@ export declare module Telegram {
             author_signature?: string;
             text?: string;
             entities?: Array<MessageEntity>;
-            animation?: Array<Animation>;
+            animation?: Animation;
             audio?: Array<Audio>;
             document?: Document;
             photo?: Array<PhotoSize>;

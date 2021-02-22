@@ -209,6 +209,9 @@ var Telegram;
             class_transformer_1.Type(() => User)
         ], Message.prototype, "via_bot", void 0);
         __decorate([
+            class_transformer_1.Type(() => Animation)
+        ], Message.prototype, "animation", void 0);
+        __decorate([
             class_transformer_1.Type(() => Document)
         ], Message.prototype, "document", void 0);
         __decorate([
