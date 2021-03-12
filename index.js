@@ -548,6 +548,16 @@ var Telegram;
                     reply_markup
                 });
             }
+            static sendSticker(token, chat_id, sticker, disable_notification, reply_to_message_id, allow_sending_without_reply, reply_markup) {
+                return api.requestAPI(token, "sendSticker", {
+                    chat_id,
+                    sticker,
+                    disable_notification,
+                    reply_to_message_id,
+                    allow_sending_without_reply,
+                    reply_markup
+                });
+            }
             static sendChatAction(
             // bot parameter
             token, 

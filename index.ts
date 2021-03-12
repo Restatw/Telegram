@@ -1213,6 +1213,28 @@ export module Telegram {
                     })
             }
 
+            public static sendSticker(
+                token: string,
+                chat_id: number | string,
+                sticker: string,
+                disable_notification?: boolean,
+                reply_to_message_id?: number,
+                allow_sending_without_reply?: boolean,
+                reply_markup?: any
+            ) {
+                return api.requestAPI<Message> (
+                    token,
+                    "sendSticker",
+                    {
+                        chat_id,
+                        sticker,
+                        disable_notification,
+                        reply_to_message_id,
+                        allow_sending_without_reply,
+                        reply_markup
+                    })
+            }
+
             public static sendChatAction(
                 // bot parameter
                 token: string,
@@ -1228,6 +1250,7 @@ export module Telegram {
                         action,
                     })
             }
+
 
             public static getUserProfilePhotos(
                 // bot parameter
