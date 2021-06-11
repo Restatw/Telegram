@@ -683,7 +683,7 @@ var Telegram;
         // bot parameter
         token, 
         // api data
-        chat_id, photo, caption, parse_mode, disable_notification, reply_to_message_id) => {
+        chat_id, photo, caption, parse_mode, disable_notification, reply_to_message_id, allow_sending_without_reply, reply_markup) => {
             return api.requestAPI(token, "sendPhoto", {
                 chat_id,
                 photo,
@@ -691,6 +691,8 @@ var Telegram;
                 parse_mode,
                 disable_notification,
                 reply_to_message_id,
+                allow_sending_without_reply,
+                reply_markup
             });
         };
         api.sendAudio = (
