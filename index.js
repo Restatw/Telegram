@@ -191,76 +191,82 @@ var Telegram;
             }
         }
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => Parameters)
+        ], Message.prototype, "parameters", void 0);
+        __decorate([
+            (0, class_transformer_1.Type)(() => User)
         ], Message.prototype, "from", void 0);
         __decorate([
-            class_transformer_1.Type(() => Chat)
+            (0, class_transformer_1.Type)(() => Chat)
         ], Message.prototype, "chat", void 0);
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], Message.prototype, "forward_from", void 0);
         __decorate([
-            class_transformer_1.Type(() => Chat)
+            (0, class_transformer_1.Type)(() => Chat)
         ], Message.prototype, "forward_from_chat", void 0);
         __decorate([
-            class_transformer_1.Type(() => Message)
+            (0, class_transformer_1.Type)(() => Message)
         ], Message.prototype, "reply_to_message", void 0);
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], Message.prototype, "via_bot", void 0);
         __decorate([
-            class_transformer_1.Type(() => Animation)
+            (0, class_transformer_1.Type)(() => Animation)
         ], Message.prototype, "animation", void 0);
         __decorate([
-            class_transformer_1.Type(() => Document)
+            (0, class_transformer_1.Type)(() => Document)
         ], Message.prototype, "document", void 0);
         __decorate([
-            class_transformer_1.Type(() => Sticker)
+            (0, class_transformer_1.Type)(() => Sticker)
         ], Message.prototype, "sticker", void 0);
         __decorate([
-            class_transformer_1.Type(() => VideoNote)
+            (0, class_transformer_1.Type)(() => VideoNote)
         ], Message.prototype, "video_note", void 0);
         __decorate([
-            class_transformer_1.Type(() => Contact)
+            (0, class_transformer_1.Type)(() => Contact)
         ], Message.prototype, "contact", void 0);
         __decorate([
-            class_transformer_1.Type(() => Dice)
+            (0, class_transformer_1.Type)(() => Dice)
         ], Message.prototype, "dice", void 0);
         __decorate([
-            class_transformer_1.Type(() => Game)
+            (0, class_transformer_1.Type)(() => Game)
         ], Message.prototype, "game", void 0);
         __decorate([
-            class_transformer_1.Type(() => Poll)
+            (0, class_transformer_1.Type)(() => Poll)
         ], Message.prototype, "poll", void 0);
         __decorate([
-            class_transformer_1.Type(() => Venue)
+            (0, class_transformer_1.Type)(() => Venue)
         ], Message.prototype, "venue", void 0);
         __decorate([
-            class_transformer_1.Type(() => Location)
+            (0, class_transformer_1.Type)(() => Location)
         ], Message.prototype, "location", void 0);
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], Message.prototype, "left_chat_member", void 0);
         __decorate([
-            class_transformer_1.Type(() => Invoice)
+            (0, class_transformer_1.Type)(() => Invoice)
         ], Message.prototype, "invoice", void 0);
         __decorate([
-            class_transformer_1.Type(() => SuccessfulPayment)
+            (0, class_transformer_1.Type)(() => SuccessfulPayment)
         ], Message.prototype, "successful_payment", void 0);
         __decorate([
-            class_transformer_1.Type(() => PassportData)
+            (0, class_transformer_1.Type)(() => PassportData)
         ], Message.prototype, "passport_data", void 0);
         __decorate([
-            class_transformer_1.Type(() => ProximityAlertTriggered)
+            (0, class_transformer_1.Type)(() => ProximityAlertTriggered)
         ], Message.prototype, "proximity_alert_triggered", void 0);
         Bot.Message = Message;
+        class Parameters {
+        }
+        Bot.Parameters = Parameters;
         class Document {
         }
         Bot.Document = Document;
         class Animation {
         }
         __decorate([
-            class_transformer_1.Type(() => Thumb)
+            (0, class_transformer_1.Type)(() => Thumb)
         ], Animation.prototype, "thumb", void 0);
         Bot.Animation = Animation;
         class Thumb {
@@ -269,24 +275,24 @@ var Telegram;
         class ProximityAlertTriggered {
         }
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], ProximityAlertTriggered.prototype, "traveler", void 0);
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], ProximityAlertTriggered.prototype, "watcher", void 0);
         Bot.ProximityAlertTriggered = ProximityAlertTriggered;
         // This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
         class MessageEntity {
         }
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], MessageEntity.prototype, "user", void 0);
         Bot.MessageEntity = MessageEntity;
         // This object represents an audio file to be treated as music by the Telegram clients.
         class Audio {
         }
         __decorate([
-            class_transformer_1.Type(() => PhotoSize)
+            (0, class_transformer_1.Type)(() => PhotoSize)
         ], Audio.prototype, "thumb", void 0);
         Bot.Audio = Audio;
         // This object represents one size of a photo or a file / sticker thumbnail.
@@ -297,10 +303,10 @@ var Telegram;
         class Sticker {
         }
         __decorate([
-            class_transformer_1.Type(() => PhotoSize)
+            (0, class_transformer_1.Type)(() => PhotoSize)
         ], Sticker.prototype, "thumb", void 0);
         __decorate([
-            class_transformer_1.Type(() => MaskPosition)
+            (0, class_transformer_1.Type)(() => MaskPosition)
         ], Sticker.prototype, "mask_position", void 0);
         Bot.Sticker = Sticker;
         // This object describes the position on faces where a mask should be placed by default.
@@ -315,7 +321,7 @@ var Telegram;
         class VideoNote {
         }
         __decorate([
-            class_transformer_1.Type(() => PhotoSize)
+            (0, class_transformer_1.Type)(() => PhotoSize)
         ], VideoNote.prototype, "thumb", void 0);
         Bot.VideoNote = VideoNote;
         // This object represents a voice note.
@@ -333,7 +339,7 @@ var Telegram;
         class Game {
         }
         __decorate([
-            class_transformer_1.Type(() => Animation)
+            (0, class_transformer_1.Type)(() => Animation)
         ], Game.prototype, "animation", void 0);
         Bot.Game = Game;
         class Poll {
@@ -348,7 +354,7 @@ var Telegram;
         class Venue {
         }
         __decorate([
-            class_transformer_1.Type(() => Location)
+            (0, class_transformer_1.Type)(() => Location)
         ], Venue.prototype, "location", void 0);
         Bot.Venue = Venue;
         class Invoice {
@@ -360,7 +366,7 @@ var Telegram;
         class OrderInfo {
         }
         __decorate([
-            class_transformer_1.Type(() => ShippingOption)
+            (0, class_transformer_1.Type)(() => ShippingOption)
         ], OrderInfo.prototype, "shipping_address", void 0);
         Bot.OrderInfo = OrderInfo;
         class ShippingAddress {
@@ -378,7 +384,7 @@ var Telegram;
         class EncryptedPassportElement {
         }
         __decorate([
-            class_transformer_1.Type(() => PassportFile)
+            (0, class_transformer_1.Type)(() => PassportFile)
         ], EncryptedPassportElement.prototype, "front_side", void 0);
         Bot.EncryptedPassportElement = EncryptedPassportElement;
         class EncryptedCredentials {
@@ -408,10 +414,10 @@ var Telegram;
             }
         }
         __decorate([
-            class_transformer_1.Type(() => Message)
+            (0, class_transformer_1.Type)(() => Message)
         ], RequestBody.prototype, "message", void 0);
         __decorate([
-            class_transformer_1.Type(() => CallbackQuery)
+            (0, class_transformer_1.Type)(() => CallbackQuery)
         ], RequestBody.prototype, "callback_query", void 0);
         Bot.RequestBody = RequestBody;
         class CallbackQuery {
@@ -426,10 +432,10 @@ var Telegram;
             }
         }
         __decorate([
-            class_transformer_1.Type(() => User)
+            (0, class_transformer_1.Type)(() => User)
         ], CallbackQuery.prototype, "from", void 0);
         __decorate([
-            class_transformer_1.Type(() => Message)
+            (0, class_transformer_1.Type)(() => Message)
         ], CallbackQuery.prototype, "message", void 0);
         Bot.CallbackQuery = CallbackQuery;
         class api {

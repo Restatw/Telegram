@@ -52,8 +52,8 @@ export declare namespace HttpApi {
         sendHttpRequest: (callback: RequestCallback, error: RequestError) => void;
     }
 }
-export declare type TelgramResponse = (data: any) => void;
-export declare type RequestError = (err: Error) => void;
+export type TelgramResponse = (data: any) => void;
+export type RequestError = (err: Error) => void;
 export declare class TelegramHttp extends HttpApi.ApiRequsetStream {
     constructor();
     setDir: (token: string, method: string) => TelegramHttp;
@@ -61,7 +61,7 @@ export declare class TelegramHttp extends HttpApi.ApiRequsetStream {
     reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void;
     static decode(data: http.IncomingMessage): string;
 }
-export declare type InputFile = string;
+export type InputFile = string;
 export declare class InlineKeyboardMarkup {
     inline_keyboard: Array<Array<InlineKeyboardButton>>;
 }
@@ -162,7 +162,7 @@ export declare class ReplyKeyboardRemove {
 }
 export declare class ForceReply {
 }
-export declare type TelegramBotMethod = string;
+export type TelegramBotMethod = string;
 export declare module Telegram {
     module Bot {
         class Response<T> {
@@ -221,6 +221,10 @@ export declare module Telegram {
             address: string;
         }
         class Message {
+            ok: boolean;
+            error_code: number;
+            description: string;
+            parameters: Parameters;
             message_id: number;
             from?: User;
             sender_chat?: Chat;
@@ -273,6 +277,9 @@ export declare module Telegram {
             replay_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply;
             getFrom(): User;
             getChat(): Chat;
+        }
+        class Parameters {
+            retry_after: number;
         }
         class Document {
         }

@@ -352,6 +352,11 @@ export module Telegram {
         }
 
         export class Message {
+            ok: boolean
+            error_code: number
+            description: string
+            @Type(() => Parameters)
+            parameters: Parameters
             message_id: number
             @Type(() => User)
             from?: User
@@ -433,6 +438,9 @@ export module Telegram {
             }
         }
 
+        export class Parameters {
+            retry_after: number
+        }
 
         export class Document {
 
