@@ -836,7 +836,7 @@ export module Telegram {
                 disable_notification?: boolean,
                 reply_to_message_id?: number,
                 reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply,
-            ) => {
+            ): Promise<Response<Message>> => {
                 return api.requestAPI<Message> (
                     token,
                     "sendMessage",
