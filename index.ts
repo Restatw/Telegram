@@ -293,6 +293,9 @@ export module Telegram {
             ok: boolean
             result: T
             description: string
+            error_code: number
+            @Type(() => Parameters)
+            parameters: Parameters
         }
 
         export class User {
@@ -352,11 +355,6 @@ export module Telegram {
         }
 
         export class Message {
-            ok: boolean
-            error_code: number
-            description: string
-            @Type(() => Parameters)
-            parameters: Parameters
             message_id: number
             @Type(() => User)
             from?: User

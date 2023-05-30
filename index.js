@@ -165,6 +165,9 @@ var Telegram;
     (function (Bot) {
         class Response {
         }
+        __decorate([
+            (0, class_transformer_1.Type)(() => Parameters)
+        ], Response.prototype, "parameters", void 0);
         Bot.Response = Response;
         class User {
         }
@@ -190,9 +193,6 @@ var Telegram;
                 return this.chat;
             }
         }
-        __decorate([
-            (0, class_transformer_1.Type)(() => Parameters)
-        ], Message.prototype, "parameters", void 0);
         __decorate([
             (0, class_transformer_1.Type)(() => User)
         ], Message.prototype, "from", void 0);

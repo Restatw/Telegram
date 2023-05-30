@@ -169,6 +169,8 @@ export declare module Telegram {
             ok: boolean;
             result: T;
             description: string;
+            error_code: number;
+            parameters: Parameters;
         }
         class User {
             id: number;
@@ -221,10 +223,6 @@ export declare module Telegram {
             address: string;
         }
         class Message {
-            ok: boolean;
-            error_code: number;
-            description: string;
-            parameters: Parameters;
             message_id: number;
             from?: User;
             sender_chat?: Chat;
