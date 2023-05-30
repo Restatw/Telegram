@@ -168,9 +168,9 @@ export declare module Telegram {
         class Response<T> {
             ok: boolean;
             result: T;
-            description: string;
-            error_code: number;
-            parameters: Parameters;
+            description?: string;
+            error_code?: number;
+            parameters?: Parameters;
         }
         class User {
             id: number;

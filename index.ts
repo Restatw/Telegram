@@ -292,10 +292,10 @@ export module Telegram {
         export class Response<T> {
             ok: boolean
             result: T
-            description: string
-            error_code: number
+            description?: string
+            error_code?: number
             @Type(() => Parameters)
-            parameters: Parameters
+            parameters?: Parameters
         }
 
         export class User {
