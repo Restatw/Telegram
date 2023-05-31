@@ -164,6 +164,13 @@ var Telegram;
     let Bot;
     (function (Bot) {
         class Response {
+            constructor() {
+                this.ok = false;
+                this.result = null;
+                this.description = "";
+                this.error_code = 0;
+                this.parameters = null;
+            }
         }
         __decorate([
             (0, class_transformer_1.Type)(() => Parameters)

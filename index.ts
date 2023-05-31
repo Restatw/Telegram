@@ -290,12 +290,12 @@ export module Telegram {
     export module Bot {
 
         export class Response<T> {
-            ok: boolean
-            result: T
-            description?: string
-            error_code?: number
+            ok: boolean = false
+            result: T = null
+            description?: string = ""
+            error_code?: number = 0
             @Type(() => Parameters)
-            parameters?: Parameters
+            parameters?: Parameters = null
         }
 
         export class User {
