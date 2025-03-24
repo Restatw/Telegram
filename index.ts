@@ -180,7 +180,7 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
                     form.append(k, value.toString());
                 } else if (Array.isArray(value)) {
                     form.append(k, JSON.stringify(value)); // 或者使用 value.join(',')
-                } else if (value instanceof fs.ReadStream || value instanceof Blob) {
+                } else if (value instanceof fs.ReadStream ) {
                     form.append(k, value); // 直接附加檔案
                 } else if (typeof value === 'object') {
                     form.append(k, JSON.stringify(value)); // 將物件序列化為 JSON
