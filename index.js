@@ -11,6 +11,7 @@ require("es6-shim");
 const class_transformer_1 = require("class-transformer");
 const http = require("http");
 const https = require("https");
+const fs = require("fs");
 const FormData = require("form-data");
 var HttpApi;
 (function (HttpApi) {
@@ -135,8 +136,23 @@ class TelegramHttp extends HttpApi.ApiRequsetStream {
             const form = new FormData();
             this.setDir(token, method);
             Object.keys(this.form).forEach(k => {
-                if (this.form[k]) {
-                    form.append(k, this.form[k]);
+                const value = this.form[k];
+                if (value === null || value === undefined)
+                    return; // 忽略空值
+                if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+                    form.append(k, value.toString());
+                }
+                else if (Array.isArray(value)) {
+                    form.append(k, JSON.stringify(value)); // 或者使用 value.join(',')
+                }
+                else if (value instanceof fs.ReadStream || value instanceof Blob) {
+                    form.append(k, value); // 直接附加檔案
+                }
+                else if (typeof value === 'object') {
+                    form.append(k, JSON.stringify(value)); // 將物件序列化為 JSON
+                }
+                else {
+                    console.warn(`無法處理的資料類型：${k}`, value);
                 }
             });
             this.setHeaders(form.getHeaders());
