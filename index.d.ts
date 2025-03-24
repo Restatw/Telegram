@@ -1,6 +1,6 @@
-/// <reference types="node" />
 import 'es6-shim';
 import * as http from 'http';
+import * as fs from 'fs';
 export declare namespace HttpApi {
     type RequestError = (err: Error) => void;
     type RequestCallback = (res: http.IncomingMessage) => void;
@@ -20,6 +20,7 @@ export declare namespace HttpApi {
         agent?: http.Agent;
         timeout?: number;
         body?: any;
+        form?: any;
         setProtocol: (v: string) => any;
         getProtocol: () => string;
         setHostDomain: (v: string) => any;
@@ -58,7 +59,16 @@ export declare class TelegramHttp extends HttpApi.ApiRequsetStream {
     constructor();
     setDir: (token: string, method: string) => TelegramHttp;
     setJsonBody: (v: any) => TelegramHttp;
+    setFormData: (v: any) => TelegramHttp;
     reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void;
+    /**
+     * Send req by formdata for big file or photo
+     * @param token
+     * @param method
+     * @param success
+     * @param error
+     */
+    reqHttpBotApiBotForm(token: string, method: string, success: TelgramResponse, error: RequestError): void;
     static decode(data: http.IncomingMessage): string;
 }
 export type InputFile = string;
@@ -163,8 +173,8 @@ export declare class ReplyKeyboardRemove {
 export declare class ForceReply {
 }
 export type TelegramBotMethod = string;
-export declare module Telegram {
-    module Bot {
+export declare namespace Telegram {
+    namespace Bot {
         class Response<T> {
             ok: boolean;
             result: T;
@@ -260,10 +270,10 @@ export declare module Telegram {
             left_chat_member?: User;
             new_chat_title?: string;
             new_chat_photo?: Array<PhotoSize>;
-            delete_chat_photo?: true;
-            group_chat_created?: true;
-            supergroup_chat_created?: true;
-            channel_chat_created?: true;
+            delete_chat_photo?: boolean;
+            group_chat_created?: boolean;
+            supergroup_chat_created?: boolean;
+            channel_chat_created?: boolean;
             migrate_to_chat_id?: number;
             migrate_from_chat_id?: number;
             pinned_message?: Message;
@@ -531,7 +541,7 @@ export declare module Telegram {
             static sendMessage: (token: string, chat_id: number, text: string, parse_mode?: string, disable_web_page_preview?: boolean, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
             static deleteMessage: (token: string, chat_id: string | number, message_id: number) => Promise<Response<any>>;
             static forwardMessage: (token: string, chat_id: number, from_chat_id: string | number, disable_notification?: boolean, message_id?: number) => Promise<Response<Message>>;
-            static sendPhoto: (token: string, chat_id: number, photo: string, caption?: string, parse_mode?: string, disable_notification?: boolean, reply_to_message_id?: number, allow_sending_without_reply?: boolean, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
+            static sendPhoto: (token: string, chat_id: number, photo: fs.ReadStream | string, caption?: string, parse_mode?: string, disable_notification?: boolean, reply_to_message_id?: number, allow_sending_without_reply?: boolean, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
             static sendAudio: (token: string, chat_id: number, audio: string, caption?: string, parse_mode?: string, duration?: number, performer?: string, title?: string, thumb?: string, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
             static sendDocument: (token: string, chat_id: number, document: string, thumb?: string, caption?: string, parse_mode?: string, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;
             static sendVideo: (token: string, chat_id: number, video: string, duration?: number, width?: number, height?: number, thumb?: string, caption?: string, parse_mode?: string, supports_streaming?: boolean, disable_notification?: boolean, reply_to_message_id?: number, reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply) => Promise<Response<Message>>;

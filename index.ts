@@ -2,6 +2,9 @@ import 'es6-shim';
 import { Type } from 'class-transformer';
 import * as http from 'http'
 import * as https from 'https'
+import * as fs from 'fs';
+import * as FormData from "form-data";
+
 export namespace HttpApi {
     
     export type RequestError = (err: Error) => void
@@ -23,6 +26,7 @@ export namespace HttpApi {
         agent?: http.Agent
         timeout?: number
         body?: any
+        form? :any
         
         setProtocol = (v: string): any => { this.protocol = v ; return this }
         getProtocol = (): string => { return this.protocol }
@@ -74,7 +78,8 @@ export namespace HttpApi {
 
         sendHttpRequest = (callback: RequestCallback, error: RequestError) => {
             let res = this.request( this, callback )
-            res.write(this.getBody())
+            let body = this.getBody()
+            if ( body) res.write(this.getBody());
             res.end()
         }
     }
@@ -131,14 +136,74 @@ export class TelegramHttp extends HttpApi.ApiRequsetStream {
         return this
     }
 
+
+    setFormData = (v: any): TelegramHttp => {
+        // Header neet use byte length
+        this.body = null;
+        this.form = v
+        return this
+    }
+
     // reqHttpBotApi 提供其他類別實作的簡易呼叫方法
     // token: string 為機器人的代號 由 botfather 提供
     // method 為呼叫的 api 方法 請查看 Telegram bot api
     // success 為 Http Request 正確取得回傳資訊後的處理動作
     // error 為 Http Request 錯誤處理
     reqHttpBotApi(token: string, method: string, success: TelgramResponse, error: RequestError): void {
-        try { this.setDir(token, method).sendHttpRequest((res) => { success(TelegramHttp.decode(res)) }, error) }
+        try { 
+            this.setDir(token, method)
+                .sendHttpRequest((res) => { 
+                    success(TelegramHttp.decode(res)) 
+                }, error) }
         catch (e) { error(e) }
+    }
+
+    /**
+     * Send req by formdata for big file or photo
+     * @param token 
+     * @param method 
+     * @param success 
+     * @param error 
+     */
+    reqHttpBotApiBotForm(token: string, method: string, success: TelgramResponse, error: RequestError): void {
+
+        try {
+
+            const form = new FormData();
+            this.setDir(token, method)
+            
+            Object.keys(this.form).forEach(k=>{
+                if( this.form[k] ) {
+                    form.append(k,this.form[k])
+                }                        
+            })
+            this.setHeaders(form.getHeaders())
+            
+            const options = {
+                method: this.getMethod(),
+                hostname: this.getHostDomain(),
+                port: this.getPort(),
+                path: this.getPath(),
+                headers: this.getHeaders(), // Automatically includes Content-Type and boundary
+            };
+            
+            const req = https.request(options, (res) => {
+                let responseData = "";
+
+                res.on("data", (chunk) => {
+                    responseData += chunk;
+                });
+
+                res.on("end", () => {
+                    success(JSON.parse(responseData))
+                });
+            });
+            req.on("error", error);
+
+            form.pipe(req);
+
+        } catch (e) { error(e) }
+        
     }
 
     // decode 處理回傳訊息的格式成可以辨識的 JSON
@@ -409,10 +474,10 @@ export module Telegram {
             left_chat_member?: User
             new_chat_title?: string
             new_chat_photo?: Array<PhotoSize>
-            delete_chat_photo?: true
-            group_chat_created?: true
-            supergroup_chat_created?: true
-            channel_chat_created?: true
+            delete_chat_photo?: boolean
+            group_chat_created?: boolean
+            supergroup_chat_created?: boolean
+            channel_chat_created?: boolean
             migrate_to_chat_id?: number
             migrate_from_chat_id?: number
             pinned_message?: Message
@@ -787,8 +852,8 @@ export module Telegram {
             ): Promise<Response<T>> => {
                 return new Promise<Response<T>>((resolve, reject) => {
                     new TelegramHttp()
-                        .setJsonBody({...request})
-                        .reqHttpBotApi(
+                        .setFormData({...request})
+                        .reqHttpBotApiBotForm(
                             token,
                             method,
                             (res) => {
@@ -895,7 +960,7 @@ export module Telegram {
                 token: string,
                 // api data
                 chat_id: number,
-                photo: string,
+                photo: fs.ReadStream | string,
                 caption?: string,
                 parse_mode?: string,
                 disable_notification?: boolean,

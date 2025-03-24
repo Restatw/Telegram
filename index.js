@@ -11,6 +11,7 @@ require("es6-shim");
 const class_transformer_1 = require("class-transformer");
 const http = require("http");
 const https = require("https");
+const FormData = require("form-data");
 var HttpApi;
 (function (HttpApi) {
     class ApiRequsetStream {
@@ -50,13 +51,15 @@ var HttpApi;
             };
             this.sendHttpRequest = (callback, error) => {
                 let res = this.request(this, callback);
-                res.write(this.getBody());
+                let body = this.getBody();
+                if (body)
+                    res.write(this.getBody());
                 res.end();
             };
         }
     }
     HttpApi.ApiRequsetStream = ApiRequsetStream;
-})(HttpApi = exports.HttpApi || (exports.HttpApi = {}));
+})(HttpApi || (exports.HttpApi = HttpApi = {}));
 // Telegram Http 請求處理格式與編碼處理方法
 class TelegramHttp extends HttpApi.ApiRequsetStream {
     // 初始化基本 Domain Port Method
@@ -93,6 +96,12 @@ class TelegramHttp extends HttpApi.ApiRequsetStream {
             });
             return this;
         };
+        this.setFormData = (v) => {
+            // Header neet use byte length
+            this.body = null;
+            this.form = v;
+            return this;
+        };
         this.ssl = true;
         this.setHostDomain("api.telegram.org")
             .setPort(443)
@@ -105,7 +114,50 @@ class TelegramHttp extends HttpApi.ApiRequsetStream {
     // error 為 Http Request 錯誤處理
     reqHttpBotApi(token, method, success, error) {
         try {
-            this.setDir(token, method).sendHttpRequest((res) => { success(TelegramHttp.decode(res)); }, error);
+            this.setDir(token, method)
+                .sendHttpRequest((res) => {
+                success(TelegramHttp.decode(res));
+            }, error);
+        }
+        catch (e) {
+            error(e);
+        }
+    }
+    /**
+     * Send req by formdata for big file or photo
+     * @param token
+     * @param method
+     * @param success
+     * @param error
+     */
+    reqHttpBotApiBotForm(token, method, success, error) {
+        try {
+            const form = new FormData();
+            this.setDir(token, method);
+            Object.keys(this.form).forEach(k => {
+                if (this.form[k]) {
+                    form.append(k, this.form[k]);
+                }
+            });
+            this.setHeaders(form.getHeaders());
+            const options = {
+                method: this.getMethod(),
+                hostname: this.getHostDomain(),
+                port: this.getPort(),
+                path: this.getPath(),
+                headers: this.getHeaders(), // Automatically includes Content-Type and boundary
+            };
+            const req = https.request(options, (res) => {
+                let responseData = "";
+                res.on("data", (chunk) => {
+                    responseData += chunk;
+                });
+                res.on("end", () => {
+                    success(JSON.parse(responseData));
+                });
+            });
+            req.on("error", error);
+            form.pipe(req);
         }
         catch (e) {
             error(e);
@@ -636,8 +688,8 @@ var Telegram;
         api.requestAPI = (token, method, request) => {
             return new Promise((resolve, reject) => {
                 new TelegramHttp()
-                    .setJsonBody(Object.assign({}, request))
-                    .reqHttpBotApi(token, method, (res) => {
+                    .setFormData(Object.assign({}, request))
+                    .reqHttpBotApiBotForm(token, method, (res) => {
                     resolve(res);
                 }, (err) => {
                     reject(err);
@@ -765,4 +817,4 @@ var Telegram;
         };
         Bot.api = api;
     })(Bot = Telegram.Bot || (Telegram.Bot = {}));
-})(Telegram = exports.Telegram || (exports.Telegram = {}));
+})(Telegram || (exports.Telegram = Telegram = {}));
